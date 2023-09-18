@@ -1,9 +1,16 @@
 ﻿using Dalamud.Memory;
 using Dalamud.Utility;
+using DotRecast.Core;
+using DotRecast.Detour;
+using DotRecast.Recast.Toolset;
+using DotRecast.Recast.Toolset.Builder;
+using DotRecast.Recast.Toolset.Geom;
+using DotRecast.Recast.Toolset.Tools;
 using FFXIVClientStructs.FFXIV.Client.System.Framework;
 using ImGuiNET;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -247,6 +254,9 @@ namespace BossMod
         private UITree _tree = new();
         private (Action, nint) _drawExtra;
         private HashSet<nint> _slaveShapes = new();
+        private NavMeshBuildResult _navmesh = new();
+        private Vector3 _target;
+        private List<Vector3> _waymarks = new();
 
         private nint _typeinfoCollisionShapePCB;
 
@@ -275,6 +285,28 @@ namespace BossMod
             ImGui.SameLine();
             if (ImGui.Button($"Generate report"))
                 Report();
+            ImGui.SameLine();
+            if (ImGui.Button("Build navmesh"))
+                BuildNavmesh(true, true);
+            ImGui.SameLine();
+            if (ImGui.Button("Set target to current pos"))
+                _target = Service.ClientState.LocalPlayer?.Position ?? default;
+            ImGui.SameLine();
+            if (ImGui.Button("Set target to target pos"))
+                _target = Service.TargetManager.Target?.Position ?? default;
+            ImGui.SameLine();
+            if (ImGui.Button("Pathfind"))
+                Pathfind();
+
+            foreach (var n in _tree.Node($"Navmesh: {_navmesh.Success}###navmesh", !_navmesh.Success))
+            {
+                int i = 0;
+                foreach (var r in _navmesh.RecastBuilderResults)
+                {
+                    _tree.LeafNodes(r.GetTelemetry().ToList(), t => $"{t.Key} = {t.Millis}ms###{i}/{t.Key}");
+                    ++i;
+                }
+            }
 
             //var screenPos = ImGui.GetMousePos();
             //var ray = CameraManager.Instance()->CurrentCamera->ScreenPointToRay(screenPos);
@@ -295,6 +327,18 @@ namespace BossMod
             }
 
             _drawExtra.Item1();
+            if (_target != default)
+                Camera.Instance?.DrawWorldSphere(_target, 2, ArenaColor.Object);
+
+            if (_waymarks.Count > 0)
+            {
+                var from = _waymarks[0];
+                foreach (var to in _waymarks.Skip(1))
+                {
+                    Camera.Instance?.DrawWorldLine(from, to, ArenaColor.Object);
+                    from = to;
+                }
+            }
         }
 
         private void UpdateSlaveShapes()
@@ -652,10 +696,11 @@ namespace BossMod
             return data->AABBMin + quantScale * new Vector3(pCompr[0], pCompr[1], pCompr[2]);
         }
 
-        private void ExportToObj(bool streamed, bool nonStreamedShapes)
+        private (List<Vector3> vertices, List<(int, int, int)> triangles) ExtractGeometry(bool streamed, bool nonStreamedShapes)
         {
-            var res = new StringBuilder();
-            var firstVertex = 1;
+            List<Vector3> vertices = new();
+            List<(int, int, int)> triangles = new();
+            var firstVertex = 0;
 
             var scene = CollisionModule.Instance->Manager->FirstScene;
             var identity = SharpDX.Matrix.Identity;
@@ -684,7 +729,7 @@ namespace BossMod
                                                 var version = *(int*)(data + 4);
                                                 if (version is 1 or 4)
                                                 {
-                                                    ExportShape(res, ref identity, (CollisionShapePCBData*)(data + 16), ref firstVertex);
+                                                    ExtractShapeGeometry(vertices, triangles, ref identity, (CollisionShapePCBData*)(data + 16), ref firstVertex);
                                                 }
                                             }
                                         }
@@ -699,7 +744,7 @@ namespace BossMod
                                 if (castObj->Shape != null && (nint)castObj->Shape->Vtbl == _typeinfoCollisionShapePCB && castObj->Shape->Data != null)
                                 {
                                     var m = castObj->World.M;
-                                    ExportShape(res, ref m, castObj->Shape->Data, ref firstVertex);
+                                    ExtractShapeGeometry(vertices, triangles, ref m, castObj->Shape->Data, ref firstVertex);
                                 }
                             }
                             break;
@@ -708,17 +753,18 @@ namespace BossMod
                 }
                 scene = (CollisionSceneWrapper*)scene->Base.Next;
             }
-            ImGui.SetClipboardText(res.ToString());
+
+            return (vertices, triangles);
         }
 
-        private void ExportShape(StringBuilder res, ref SharpDX.Matrix world, CollisionShapePCBData* data, ref int firstVertex)
+        private void ExtractShapeGeometry(List<Vector3> vertices, List<(int, int, int)> triangles, ref SharpDX.Matrix world, CollisionShapePCBData* data, ref int firstVertex)
         {
             var pRaw = (float*)(data + 1);
             for (int i = 0; i < data->NumVertsRaw; ++i)
             {
                 var v = new Vector3(pRaw[0], pRaw[1], pRaw[2]);
                 var w = SharpDX.Vector3.TransformCoordinate(new(v.X, v.Y, v.Z), world);
-                res.AppendLine($"v {w.X} {w.Y} {w.Z}");
+                vertices.Add(w.ToSystem());
                 pRaw += 3;
             }
             var pCompressed = (ushort*)pRaw;
@@ -727,21 +773,32 @@ namespace BossMod
             {
                 var v = data->AABBMin + quantScale * new Vector3(pCompressed[0], pCompressed[1], pCompressed[2]);
                 var w = SharpDX.Vector3.TransformCoordinate(new(v.X, v.Y, v.Z), world);
-                res.AppendLine($"v {w.X} {w.Y} {w.Z}");
+                vertices.Add(w.ToSystem());
                 pCompressed += 3;
             }
             var pPrims = (CollisionShapePrimitive*)pCompressed;
             for (int i = 0; i < data->NumPrims; ++i)
             {
-                res.AppendLine($"f {pPrims->V1 + firstVertex} {pPrims->V2 + firstVertex} {pPrims->V3 + firstVertex}");
+                triangles.Add((pPrims->V1 + firstVertex, pPrims->V2 + firstVertex, pPrims->V3 + firstVertex));
                 ++pPrims;
             }
             firstVertex += data->NumVertsRaw + data->NumVertsCompressed;
 
             if (data->Child1Offset != 0)
-                ExportShape(res, ref world, (CollisionShapePCBData*)((byte*)data + data->Child1Offset), ref firstVertex);
+                ExtractShapeGeometry(vertices, triangles, ref world, (CollisionShapePCBData*)((byte*)data + data->Child1Offset), ref firstVertex);
             if (data->Child2Offset != 0)
-                ExportShape(res, ref world, (CollisionShapePCBData*)((byte*)data + data->Child2Offset), ref firstVertex);
+                ExtractShapeGeometry(vertices, triangles, ref world, (CollisionShapePCBData*)((byte*)data + data->Child2Offset), ref firstVertex);
+        }
+
+        private void ExportToObj(bool streamed, bool nonStreamedShapes)
+        {
+            var geom = ExtractGeometry(streamed, nonStreamedShapes);
+            var res = new StringBuilder();
+            foreach (var v in geom.vertices)
+                res.AppendLine($"v {v.X} {v.Y} {v.Z}");
+            foreach (var tri in geom.triangles)
+                res.AppendLine($"f {tri.Item1 + 1} {tri.Item2 + 1} {tri.Item3 + 1}");
+            ImGui.SetClipboardText(res.ToString());
         }
 
         private void Report()
@@ -807,6 +864,59 @@ namespace BossMod
             foreach (var vt in shapeVtbls)
                 res.AppendLine($"{vt.Key - Service.SigScanner.Module.BaseAddress:X} == {vt.Value}");
             ImGui.SetClipboardText(res.ToString());
+        }
+
+        private void BuildNavmesh(bool streamed, bool nonStreamedShapes)
+        {
+            Service.Log("[navmesh] start");
+            var geom = ExtractGeometry(streamed, nonStreamedShapes);
+
+            Service.Log("[navmesh] to-prov");
+            var v = new float[geom.vertices.Count * 3];
+            var f = new int[geom.triangles.Count * 3];
+            int i = 0;
+            foreach (var vert in geom.vertices)
+            {
+                v[i++] = vert.X;
+                v[i++] = vert.Y;
+                v[i++] = vert.Z;
+            }
+            i = 0;
+            foreach (var tri in geom.triangles)
+            {
+                f[i++] = tri.Item1;
+                f[i++] = tri.Item2;
+                f[i++] = tri.Item3;
+            }
+            var geomProv = new DemoInputGeomProvider(v, f);
+
+            Service.Log("[navmesh] build");
+            var settings = new RcNavMeshBuildSettings();
+            _navmesh = new SoloNavMeshBuilder().Build(geomProv, settings);
+
+            Service.Log("[navmesh] end");
+        }
+
+        private void Pathfind()
+        {
+            _waymarks.Clear();
+            var src = Service.ClientState.LocalPlayer?.Position ?? default;
+            if (_target != default && src != default && _navmesh.Success)
+            {
+                var tool = new RcTestNavMeshTool();
+                var query = new DtNavMeshQuery(_navmesh.NavMesh);
+                var filter = new DtQueryDefaultFilter();
+                query.FindNearestPoly(new(src.X, src.Y, src.Z), new(2, 2, 2), filter, out var startRef, out _, out _);
+                query.FindNearestPoly(new(_target.X, _target.Y, _target.Z), new(2, 2, 2), filter, out var endRef, out _, out _);
+                List<long> polys = new();
+                List<RcVec3f> smooth = new();
+                var success = tool.FindFollowPath(_navmesh.NavMesh, query, startRef, endRef, new(src.X, src.Y, src.Z), new(_target.X, _target.Y, _target.Z), filter, true, ref polys, ref smooth);
+                Service.Log($"[pathfind] {success}");
+                if (success.Succeeded())
+                {
+                    _waymarks.AddRange(smooth.Select(v => new Vector3(v.x, v.y, v.z)));
+                }
+            }
         }
 
         private string SphereStr(Vector4 s) => $"[{s.X:f3}, {s.Y:f3}, {s.Z:f3}] R{s.W:f3}";
