@@ -93,7 +93,7 @@ namespace BossMod.Endwalker.Savage.P3SPhoinix
             }
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach ((int i, var player) in module.Raid.WithSlot())
             {
@@ -113,7 +113,7 @@ namespace BossMod.Endwalker.Savage.P3SPhoinix
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var twister in module.Enemies(OID.DarkblazeTwister))
             {

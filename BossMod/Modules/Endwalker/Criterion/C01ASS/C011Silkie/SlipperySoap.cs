@@ -62,7 +62,7 @@ namespace BossMod.Endwalker.Criterion.C01ASS.C011Silkie
             }
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_chargeTarget != null)
                 _chargeShape.Draw(arena, module.PrimaryActor.Position, _chargeDir, ArenaColor.SafeFromAOE);

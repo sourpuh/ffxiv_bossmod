@@ -24,7 +24,7 @@
                 hints.Add("Stack with co-tank");
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             arena.AddCircle(pc.Position, _radius, ArenaColor.Danger);
             foreach (var player in module.Raid.WithoutSlot().Exclude(pc))

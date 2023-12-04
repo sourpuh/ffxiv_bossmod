@@ -169,7 +169,7 @@ namespace BossMod.Components
                 : Active ? PlayerPriority.Normal : PlayerPriority.Irrelevant;
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (!AlwaysShowSpreads && Spreads.FindIndex(s => s.Target == pc) is var iSpread && iSpread >= 0)
             {

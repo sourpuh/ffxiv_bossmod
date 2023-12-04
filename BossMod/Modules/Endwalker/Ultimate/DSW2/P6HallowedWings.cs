@@ -115,7 +115,7 @@ namespace BossMod.Endwalker.Ultimate.DSW2
                 hints.Add($"Tankbuster {(_far ? "far" : "near")}");
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             base.DrawArenaForeground(module, pcSlot, pc, arena);
             foreach (var p in SafeSpots(module, pc))

@@ -22,7 +22,7 @@ namespace BossMod.Endwalker.Savage.P7SAgdistis
         public static float BridgeStartOffset { get; } = MathF.Sqrt(SmallPlatformRadius * SmallPlatformRadius - BridgeHalfWidth * BridgeHalfWidth);
         public static float BridgeCenterOffset { get; } = BridgeHalfWidth / 60.Degrees().Tan();
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (!_threePlatforms)
             {
@@ -90,7 +90,7 @@ namespace BossMod.Endwalker.Savage.P7SAgdistis
             }
         }
 
-        private void DrawBridge(MiniArena arena, WPos p1, WPos p2, bool p2center)
+        private void DrawBridge(IArena arena, WPos p1, WPos p2, bool p2center)
         {
             var dir = (p2 - p1).Normalized();
             var p1adj = p1 + dir * BridgeStartOffset;

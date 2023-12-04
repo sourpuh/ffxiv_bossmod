@@ -15,7 +15,7 @@ namespace BossMod.Endwalker.Savage.P3SPhoinix
             }
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_directions[0] != null)
             {
@@ -65,7 +65,7 @@ namespace BossMod.Endwalker.Savage.P3SPhoinix
             }
         }
 
-        private void DrawZone(MiniArena arena, Angle? dir, uint color)
+        private void DrawZone(IArena arena, Angle? dir, uint color)
         {
             if (dir != null)
             {

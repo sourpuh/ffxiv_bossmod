@@ -26,7 +26,7 @@ namespace BossMod.Endwalker.Unreal.Un2Sephirot
             return (_greenTargets | _purpleTargets)[playerSlot] ? PlayerPriority.Interesting : PlayerPriority.Irrelevant;
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var (slot, actor) in module.Raid.WithSlot().IncludedInMask(_greenTargets))
                 arena.AddCircle(actor.Position, _greenRadius, 0xff00ff00, slot == pcSlot ? 2 : 1);

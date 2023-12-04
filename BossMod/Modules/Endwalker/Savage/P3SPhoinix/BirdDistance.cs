@@ -46,7 +46,7 @@ namespace BossMod.Endwalker.Savage.P3SPhoinix
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             // draw alive birds tanked by PC and circles around dead birds
             var watchedBirds = module.Enemies(_watchedBirdsID);

@@ -37,7 +37,7 @@ namespace BossMod.RealmReborn.Extreme.Ex1Ultima
             return _kiters[playerSlot] ? PlayerPriority.Danger : PlayerPriority.Irrelevant;
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var orb in module.Enemies(OID.Aetheroplasm).Where(a => !_explodedOrbs.Contains(a.InstanceID)))
             {

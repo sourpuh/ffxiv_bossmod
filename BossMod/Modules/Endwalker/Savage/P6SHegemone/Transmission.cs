@@ -43,7 +43,7 @@ namespace BossMod.Endwalker.Savage.P6SHegemone
             return _clips[playerSlot, pcSlot] ? PlayerPriority.Danger : _clippedByOthers[playerSlot] ? PlayerPriority.Interesting : PlayerPriority.Normal;
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var e in ActiveAOEs(module))
                 if (e.slot == pcSlot || ExpireImminent(module, e.slot))

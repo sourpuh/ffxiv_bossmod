@@ -44,7 +44,7 @@ namespace BossMod.Endwalker.Criterion.C01ASS.C013Shadowcaster
                 return PlayerPriority.Irrelevant;
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (NumJumps >= 2 && NumCleaves < _jumpTargets.Count)
             {

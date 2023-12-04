@@ -138,7 +138,7 @@ namespace BossMod.Shadowbringers.Foray.CriticalEngagement.CE41WithDiremiteAndMai
                 yield return new(_shape, module.PrimaryActor.Position, Angle.FromDirection(target.Position - module.PrimaryActor.Position), _activation);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (NextTarget == pc)
                 _shape.Outline(arena, module.PrimaryActor.Position, Angle.FromDirection(pc.Position - module.PrimaryActor.Position), ArenaColor.Danger);

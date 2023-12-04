@@ -23,7 +23,7 @@
             return ResolveImminent ? base.CalcPriority(module, pcSlot, pc, playerSlot, player, ref customColor) : PlayerPriority.Irrelevant;
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (ResolveImminent)
                 base.DrawArenaForeground(module, pcSlot, pc, arena);

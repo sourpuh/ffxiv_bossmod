@@ -51,7 +51,7 @@ namespace BossMod.Components
         public static WPos AwayFromSource(WPos pos, WPos origin, float distance) => pos != origin ? pos + distance * (pos - origin).Normalized() : pos;
         public static WPos AwayFromSource(WPos pos, Actor? source, float distance) => source != null ? AwayFromSource(pos, source.Position, distance) : pos;
 
-        public static void DrawKnockback(WPos from, WPos to, Angle rot, MiniArena arena)
+        public static void DrawKnockback(WPos from, WPos to, Angle rot, IArena arena)
         {
             if (from != to)
             {
@@ -59,7 +59,7 @@ namespace BossMod.Components
                 arena.AddLine(from, to, ArenaColor.Danger);
             }
         }
-        public static void DrawKnockback(Actor actor, WPos adjPos, MiniArena arena) => DrawKnockback(actor.Position, adjPos, actor.Rotation, arena);
+        public static void DrawKnockback(Actor actor, WPos adjPos, IArena arena) => DrawKnockback(actor.Position, adjPos, actor.Rotation, arena);
 
         public Knockback(ActionID aid = new(), bool ignoreImmunes = false, int maxCasts = int.MaxValue) : base(aid)
         {
@@ -76,7 +76,7 @@ namespace BossMod.Components
                 hints.Add("About to be knocked into wall!");
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var e in CalculateMovements(module, pcSlot, pc))
                 DrawKnockback(e.from, e.to, pc.Rotation, arena);

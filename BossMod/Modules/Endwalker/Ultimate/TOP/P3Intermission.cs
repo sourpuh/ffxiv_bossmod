@@ -19,7 +19,7 @@ namespace BossMod.Endwalker.Ultimate.TOP
 
         public P3SniperCannon() : base(6, 6, alwaysShowSpreads: true) { }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             base.DrawArenaForeground(module, pcSlot, pc, arena);
             foreach (var s in EnumerateSafeSpots(module, pcSlot))

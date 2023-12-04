@@ -39,7 +39,7 @@
                 movementHints.Add(actor.Position, module.Bounds.Center + SafeSpotDirection(slot), ArenaColor.Safe);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (Done || Debuffs[pcSlot] == Debuff.None)
                 return;

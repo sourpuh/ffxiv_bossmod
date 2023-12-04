@@ -77,7 +77,7 @@ namespace BossMod.Components
             }
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             // TODO: reconsider, this looks like shit...
             if (Origin != null)

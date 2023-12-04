@@ -23,7 +23,7 @@
                 hints.Add("GTFO from wing!");
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             _aoe.Draw(arena, module.PrimaryActor);
         }

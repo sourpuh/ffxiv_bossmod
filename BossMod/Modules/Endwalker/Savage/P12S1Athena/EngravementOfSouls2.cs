@@ -24,7 +24,7 @@
             return player == _lightRay || player == _darkRay ? PlayerPriority.Interesting : PlayerPriority.Normal;
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             DrawOutline(module, _lightRay, _darkCamp[pcSlot]);
             DrawOutline(module, _darkRay, _lightCamp[pcSlot]);

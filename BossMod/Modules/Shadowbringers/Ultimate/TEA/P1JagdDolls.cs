@@ -33,7 +33,7 @@ namespace BossMod.Shadowbringers.Ultimate.TEA
                 t.ForbidDOTs = true;
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var doll in ActiveDolls)
             {

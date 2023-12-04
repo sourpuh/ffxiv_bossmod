@@ -38,7 +38,7 @@ namespace BossMod.Endwalker.Savage.P10SPandaemonium
     {
         private List<(Actor from, Actor to, uint color)> _webs = new();
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var w in _webs)
                 arena.AddLine(w.from.Position, w.to.Position, w.color);

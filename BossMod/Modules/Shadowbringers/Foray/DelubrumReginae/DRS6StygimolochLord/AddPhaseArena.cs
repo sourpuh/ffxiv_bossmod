@@ -10,7 +10,7 @@ namespace BossMod.Shadowbringers.Foray.DelubrumReginae.DRS6StygimolochLord
         private float _alcoveDepth = 1;
         private float _alcoveWidth = 2;
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             arena.Zone(module.Bounds.ClipAndTriangulate(InDanger(module)), ArenaColor.AOE);
             arena.Zone(module.Bounds.ClipAndTriangulate(MidDanger(module)), ArenaColor.AOE);

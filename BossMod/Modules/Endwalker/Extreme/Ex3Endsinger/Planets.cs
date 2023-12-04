@@ -34,7 +34,7 @@ namespace BossMod.Endwalker.Extreme.Ex3Endsigner
             }
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             _aoeHead.Draw(arena, _head);
             if (_planetsFiery.Count > 0)
@@ -43,7 +43,7 @@ namespace BossMod.Endwalker.Extreme.Ex3Endsigner
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_planetsAzure.Count > 0)
             {

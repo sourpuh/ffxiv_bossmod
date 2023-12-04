@@ -73,7 +73,7 @@ namespace BossMod.Endwalker.Savage.P4S2Hesperos
             }
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (CurState == State.Done)
                 return;
@@ -82,7 +82,7 @@ namespace BossMod.Endwalker.Savage.P4S2Hesperos
                 arena.ZoneCircle(aoe.Position, P4S2.WreathAOERadius, ArenaColor.AOE);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             // draw players
             foreach (var player in module.Raid.WithoutSlot().Exclude(pc))

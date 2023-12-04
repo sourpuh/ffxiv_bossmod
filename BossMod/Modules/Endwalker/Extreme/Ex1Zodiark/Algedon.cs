@@ -15,7 +15,7 @@
                 hints.Add("GTFO from diagonal aoe!");
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             _shape.Draw(arena, _caster);
         }

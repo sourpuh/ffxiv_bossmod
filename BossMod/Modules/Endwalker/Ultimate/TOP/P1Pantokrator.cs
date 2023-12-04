@@ -29,7 +29,7 @@ namespace BossMod.Endwalker.Ultimate.TOP
             _pantokrator = module.FindComponent<P1Pantokrator>();
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (Casters.Count == 0 || NumCasts > 0)
                 return;
@@ -107,7 +107,7 @@ namespace BossMod.Endwalker.Ultimate.TOP
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             var spreadOrder = NextSpreadOrder();
             var stackOrder = NextStackOrder();

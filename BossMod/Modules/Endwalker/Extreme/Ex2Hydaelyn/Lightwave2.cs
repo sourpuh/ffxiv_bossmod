@@ -40,7 +40,7 @@ namespace BossMod.Endwalker.Extreme.Ex2Hydaelyn
                 hints.Add("Hide behind crystal!");
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (module.PrimaryActor.CastInfo?.IsSpell(AID.HerosGlory) ?? false)
                 _gloryAOE.Draw(arena, module.PrimaryActor);

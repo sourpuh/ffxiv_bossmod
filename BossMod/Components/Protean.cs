@@ -28,7 +28,7 @@ namespace BossMod.Components
             return playerProteanSource == null ? PlayerPriority.Irrelevant : IsPlayerClipped(playerProteanSource, player, pc) ? PlayerPriority.Danger : PlayerPriority.Normal;
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             // draw own protean (if any) and clipping proteans (if any)
             foreach (var (source, target) in ActiveAOEs(module))

@@ -35,7 +35,7 @@ namespace BossMod.RealmReborn.Extreme.Ex1Ultima
             }
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_eotsCaster != null)
                 _aoeEOTS.Draw(arena, _eotsCaster);

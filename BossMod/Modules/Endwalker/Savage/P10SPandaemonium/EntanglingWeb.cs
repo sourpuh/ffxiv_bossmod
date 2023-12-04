@@ -36,7 +36,7 @@ namespace BossMod.Endwalker.Savage.P10SPandaemonium
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             arena.Actors(_pillars, ArenaColor.Object, true);
             foreach (var t in _targets)

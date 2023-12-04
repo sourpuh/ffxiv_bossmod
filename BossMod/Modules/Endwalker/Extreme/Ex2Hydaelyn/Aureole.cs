@@ -17,7 +17,7 @@
                 hints.Add("GTFO from aoe!");
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             _aoe.Draw(arena, module.PrimaryActor);
             _aoe.Draw(arena, module.PrimaryActor.Position, module.PrimaryActor.Rotation + 180.Degrees());

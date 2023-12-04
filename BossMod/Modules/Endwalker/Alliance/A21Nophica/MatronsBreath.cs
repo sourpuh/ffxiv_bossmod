@@ -24,7 +24,7 @@ namespace BossMod.Endwalker.Alliance.A21Nophica
                 hints.Add("Go to correct safe zone!");
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             _shape.Draw(arena, NextSafeZone);
         }

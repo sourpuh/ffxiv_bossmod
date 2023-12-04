@@ -26,7 +26,7 @@
                 hints.Add("Go to edge!");
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             _aoeMistralSong.Draw(arena, _mistralSong);
             _aoeEOTS.Draw(arena, _eots);
@@ -34,7 +34,7 @@
                 _aoeGeocrush.Draw(arena, _geocrush);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             var adjPos = _vulcanBurstImminent ? arena.Bounds.ClampToBounds(Components.Knockback.AwayFromSource(pc.Position, _mistralSong, 30)) : pc.Position;
             if (adjPos != pc.Position)

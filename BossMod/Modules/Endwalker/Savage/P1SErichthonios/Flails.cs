@@ -71,7 +71,7 @@
                 hints.Add("Hit by second flail!");
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             _first?.Draw(arena, module.PrimaryActor);
             if (_showSecond)

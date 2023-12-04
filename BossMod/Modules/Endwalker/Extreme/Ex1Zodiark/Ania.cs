@@ -32,7 +32,7 @@ namespace BossMod.Endwalker.Extreme.Ex1Zodiark
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_target == null)
                 return;

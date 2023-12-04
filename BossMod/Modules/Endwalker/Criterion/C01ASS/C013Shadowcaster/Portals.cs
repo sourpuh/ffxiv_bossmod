@@ -76,7 +76,7 @@ namespace BossMod.Endwalker.Criterion.C01ASS.C013Shadowcaster
         private List<(WPos n, WPos s)> _portals = new();
         private int[] _playerPortals = new int[PartyState.MaxPartySize]; // 0 = unassigned, otherwise 'z direction sign' (-1 if own portal points N, +1 for S)
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             var dir = _playerPortals[pcSlot];
             if (dir != 0)

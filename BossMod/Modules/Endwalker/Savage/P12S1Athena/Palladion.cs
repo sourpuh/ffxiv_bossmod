@@ -73,7 +73,7 @@ namespace BossMod.Endwalker.Savage.P12S1Athena
     // TODO: reconsider - base activation on env controls, show danger zone instead of border?..
     class PalladionArena : BossComponent
     {
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             for (int i = 0; i < 8; ++i)
                 arena.PathLineTo(module.Bounds.Center + 14 * (i * 45).Degrees().ToDirection());
@@ -108,7 +108,7 @@ namespace BossMod.Endwalker.Savage.P12S1Athena
                 hints.Add("Too close!");
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_palladion != null && NumCasts < _palladion.JumpTargets.Length && _palladion.JumpTargets[NumCasts] is var target && target != null && (pc == target || pc == _palladion.Partners[NumCasts]))
                 BuildShape(target.Position).Outline(arena, _origin, default, ArenaColor.Safe);
@@ -220,7 +220,7 @@ namespace BossMod.Endwalker.Savage.P12S1Athena
             base.AddHints(module, slot, actor, hints, movementHints);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (CurrentBaits.Count > 0)
                 arena.Actor(module.Bounds.Center, default, ArenaColor.Object);

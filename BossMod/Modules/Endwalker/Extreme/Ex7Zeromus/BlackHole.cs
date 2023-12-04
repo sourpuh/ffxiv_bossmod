@@ -35,13 +35,13 @@ namespace BossMod.Endwalker.Extreme.Ex7Zeromus
             return player == Baiter ? PlayerPriority.Danger : PlayerPriority.Irrelevant;
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (Voidzone != null)
                 arena.ZoneCircle(Voidzone.Position, _growthStart == default ? _startingRadius : Math.Min(_maxRadius, _startingRadius + _growthPerSecond * (float)(module.WorldState.CurrentTime - _growthStart).TotalSeconds), ArenaColor.AOE);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (Baiter != null)
                 arena.AddCircle(Baiter.Position, _startingRadius, ArenaColor.Danger);

@@ -38,7 +38,7 @@ namespace BossMod.Endwalker.Savage.P12S2PallasAthena
             return Target(module)?.InstanceID == player.InstanceID ? PlayerPriority.Danger : PlayerPriority.Irrelevant;
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (Target(module) is var target && target != default)
                 _shape.Draw(arena, Origin(module, target), default, pc.InstanceID == target.InstanceID ? ArenaColor.SafeFromAOE : ArenaColor.AOE);

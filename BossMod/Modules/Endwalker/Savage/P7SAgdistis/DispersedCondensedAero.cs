@@ -46,7 +46,7 @@ namespace BossMod.Endwalker.Savage.P7SAgdistis
             return (_condensed ? module.PrimaryActor.TargetID == player.InstanceID : player.Role == Role.Tank) ? PlayerPriority.Danger : PlayerPriority.Irrelevant;
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_condensed)
             {

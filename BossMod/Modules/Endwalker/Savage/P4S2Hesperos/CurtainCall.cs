@@ -34,7 +34,7 @@ namespace BossMod.Endwalker.Savage.P4S2Hesperos
                 hints.Add($"Order: {string.Join(" -> ", _playersInBreakOrder.Skip(_numCasts).Select(a => OrderTextForPlayer(module, a)))}");
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             // draw other players
             foreach ((int slot, var player) in module.Raid.WithSlot().Exclude(pc))

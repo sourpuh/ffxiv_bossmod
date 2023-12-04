@@ -74,7 +74,7 @@ namespace BossMod.Shadowbringers.Foray.CriticalEngagement.CE52TimeToBurn
             _bombs = module.Enemies(OID.TimeBomb1); // either 1 or 2 works, dunno what's the difference
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var p in _eruptionSafeSpots)
                 _shapeEruption.Draw(arena, p, new(), ArenaColor.SafeFromAOE);

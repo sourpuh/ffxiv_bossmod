@@ -19,7 +19,7 @@ namespace BossMod.Endwalker.Savage.P2SHippokampos
             }
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             var head = module.Enemies(OID.DissociatedHead).FirstOrDefault();
             if (_shape == null || head == null || module.Bounds.Contains(head.Position))

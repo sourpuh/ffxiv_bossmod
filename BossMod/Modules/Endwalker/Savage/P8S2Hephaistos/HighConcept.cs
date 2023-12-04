@@ -241,7 +241,7 @@ namespace BossMod.Endwalker.Savage.P8S2
                 hints.Add(hint, false);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             var pcRole = RoleForSlot(pcSlot);
             switch (NextMechanic)
@@ -387,7 +387,7 @@ namespace BossMod.Endwalker.Savage.P8S2
                 hints.Add(hint, false);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             var pcRole = RoleForSlot(pcSlot);
             switch (NextMechanic)

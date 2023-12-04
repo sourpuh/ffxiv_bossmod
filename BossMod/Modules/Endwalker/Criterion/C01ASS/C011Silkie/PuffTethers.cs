@@ -20,7 +20,7 @@ namespace BossMod.Endwalker.Criterion.C01ASS.C011Silkie
             _tracker = module.FindComponent<PuffTracker>();
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_tracker == null)
                 return;
@@ -28,7 +28,7 @@ namespace BossMod.Endwalker.Criterion.C01ASS.C011Silkie
             DrawTetherHints(module, pc, _tracker.FizzlingPuffs, true);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_tracker == null)
                 return;

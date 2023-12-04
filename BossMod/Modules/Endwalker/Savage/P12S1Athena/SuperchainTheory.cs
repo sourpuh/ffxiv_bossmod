@@ -106,7 +106,7 @@ namespace BossMod.Endwalker.Savage.P12S1Athena
             return PlayerPriority.Normal;
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var c in ImminentChains())
             {
@@ -131,7 +131,7 @@ namespace BossMod.Endwalker.Savage.P12S1Athena
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var c in ImminentChains())
             {

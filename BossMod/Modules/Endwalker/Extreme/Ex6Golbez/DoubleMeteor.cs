@@ -57,7 +57,7 @@ namespace BossMod.Endwalker.Extreme.Ex6Golbez
                 hints.Add("Soak the tower!", !actor.Position.InCircle(tower.Position, 4));
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             DrawTower(arena, _towerTH, !_forbidden[pcSlot] && pc.Class.IsSupport());
             DrawTower(arena, _towerDD, !_forbidden[pcSlot] && pc.Class.IsDD());
@@ -97,7 +97,7 @@ namespace BossMod.Endwalker.Extreme.Ex6Golbez
                 _forbidden.Set(module.Raid.FindSlot(actor.InstanceID));
         }
 
-        private void DrawTower(MiniArena arena, Actor? tower, bool safe)
+        private void DrawTower(IArena arena, Actor? tower, bool safe)
         {
             if (tower != null)
                 arena.AddCircle(tower.Position, 4, safe ? ArenaColor.Safe : ArenaColor.Danger, 2);

@@ -20,7 +20,7 @@ namespace BossMod.Endwalker.Savage.P2SHippokampos
                 hints.Add("GTFO from cataract!");
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             _aoeBoss.Draw(arena, module.PrimaryActor);
             _aoeHead.Draw(arena, module.Enemies(OID.CataractHead).FirstOrDefault());

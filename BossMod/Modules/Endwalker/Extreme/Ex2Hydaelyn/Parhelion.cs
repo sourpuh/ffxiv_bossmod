@@ -16,7 +16,7 @@ namespace BossMod.Endwalker.Extreme.Ex2Hydaelyn
                 hints.Add("GTFO from aoe!");
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var p in ActiveParhelions(module))
                 _beacon.Draw(arena, p);

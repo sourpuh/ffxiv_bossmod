@@ -90,7 +90,7 @@ namespace BossMod.Endwalker.Savage.P8S1Hephaistos
         private const float _safespotOffset = 15;
         private const float _safespotRadius = 3;
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (NumMechanicsDone == 0)
             {
@@ -115,7 +115,7 @@ namespace BossMod.Endwalker.Savage.P8S1Hephaistos
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (NumMechanicsDone < 2 && _seenVisuals > 0)
             {

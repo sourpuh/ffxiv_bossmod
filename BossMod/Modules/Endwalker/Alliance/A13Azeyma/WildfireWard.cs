@@ -16,7 +16,7 @@ namespace BossMod.Endwalker.Alliance.A13Azeyma
                 hints.Add("About to be knocked into fire!");
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             arena.ZoneTri(_tri[0], _tri[1], _tri[2], ArenaColor.SafeFromAOE);
         }

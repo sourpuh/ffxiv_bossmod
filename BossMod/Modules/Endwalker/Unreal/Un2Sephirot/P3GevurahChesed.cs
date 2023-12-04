@@ -16,7 +16,7 @@
                 hints.Add("GTFO from aoe!");
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             var side = ForbiddenSide(pcSlot);
             if (side != 0)

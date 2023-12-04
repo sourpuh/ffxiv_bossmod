@@ -40,7 +40,7 @@ namespace BossMod.Endwalker.Ultimate.DSW2
                 hints.Add(shouldBeClosest ? "Move closer to dragons!" : "Move away from dragons!");
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_boiling[pcSlot] && _nidhogg != null)
                 _shape.Draw(arena, _nidhogg);

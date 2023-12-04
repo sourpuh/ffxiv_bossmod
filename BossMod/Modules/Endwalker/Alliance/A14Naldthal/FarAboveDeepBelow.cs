@@ -67,7 +67,7 @@ namespace BossMod.Endwalker.Alliance.A14Naldthal
             return _real && _targets.Contains(player) ? PlayerPriority.Danger : PlayerPriority.Irrelevant;
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_real)
                 foreach (var t in _targets)

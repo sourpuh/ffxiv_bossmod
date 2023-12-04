@@ -30,7 +30,7 @@ namespace BossMod.Endwalker.Savage.P3SPhoinix
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             // draw other potential targets, to simplify positioning
             bool healerOrTank = pc.Role == Role.Tank || pc.Role == Role.Healer;

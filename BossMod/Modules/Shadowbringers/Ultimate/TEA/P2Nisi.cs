@@ -40,7 +40,7 @@ namespace BossMod.Shadowbringers.Ultimate.TEA
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             var partner = module.Raid[PassPartnerSlot(pcSlot)];
             if (partner != null)

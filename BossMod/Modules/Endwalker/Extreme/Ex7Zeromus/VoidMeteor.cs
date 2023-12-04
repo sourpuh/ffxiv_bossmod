@@ -49,7 +49,7 @@ namespace BossMod.Endwalker.Extreme.Ex7Zeromus
             return SourceIfActive(playerSlot) != null ? PlayerPriority.Interesting : PlayerPriority.Normal;
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_drawShadows && SourceIfActive(pcSlot) is var source && source != null)
             {
@@ -59,7 +59,7 @@ namespace BossMod.Endwalker.Extreme.Ex7Zeromus
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var m in _meteors)
                 arena.AddCircle(m, _radius, ArenaColor.Object);

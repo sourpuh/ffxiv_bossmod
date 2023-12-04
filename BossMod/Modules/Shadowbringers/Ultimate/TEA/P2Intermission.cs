@@ -35,7 +35,7 @@ namespace BossMod.Shadowbringers.Ultimate.TEA
         }
 
         // TODO: reconsider
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (SafeSpotHint(module, pcSlot) is var safespot && safespot != null)
                 arena.AddCircle(safespot.Value, 1, ArenaColor.Safe);

@@ -24,7 +24,7 @@ namespace BossMod.Endwalker.Ultimate.DSW2
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var o in _orbs.Where(o => !o.exploded))
             {
@@ -101,7 +101,7 @@ namespace BossMod.Endwalker.Ultimate.DSW2
             return _baiters[playerSlot] ? PlayerPriority.Danger : PlayerPriority.Normal;
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             bool pcCanSwap = !_forbidden[pcSlot] && !_baiters[pcSlot];
             foreach (var (slot, player) in module.Raid.WithSlot(true).IncludedInMask(_baiters))

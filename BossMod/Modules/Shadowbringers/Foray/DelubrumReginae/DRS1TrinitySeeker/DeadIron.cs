@@ -37,7 +37,7 @@ namespace BossMod.Shadowbringers.Foray.DelubrumReginae.DRS1TrinitySeeker
             return _earthshakers.Any(e => e.target == player) ? PlayerPriority.Interesting : PlayerPriority.Irrelevant;
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             var ownSource = _earthshakers.Find(e => e.target == pc).source;
             if (ownSource != null)

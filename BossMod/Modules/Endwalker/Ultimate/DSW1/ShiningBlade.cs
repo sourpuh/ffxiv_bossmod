@@ -35,7 +35,7 @@ namespace BossMod.Endwalker.Ultimate.DSW1
         }
 
         // TODO: consider moving that to a separate component?
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var p in _tears)
                 arena.ZoneCircle(p.Position, _tearRadius, ArenaColor.AOE);
@@ -127,7 +127,7 @@ namespace BossMod.Endwalker.Ultimate.DSW1
             return player == _target ? PlayerPriority.Danger : PlayerPriority.Irrelevant;
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_target != null)
                 arena.AddCircle(_target.Position, _executionRadius, ArenaColor.Danger);

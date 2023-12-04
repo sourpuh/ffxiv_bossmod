@@ -84,7 +84,7 @@ namespace BossMod.Shadowbringers.Foray.DelubrumReginae.DRS7Queen
                     movementHints.Add(m);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var m in GetSafeSpotMoves(module, pc))
                 arena.AddLine(m.from, m.to, m.color);

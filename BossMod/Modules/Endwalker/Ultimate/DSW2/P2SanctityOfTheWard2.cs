@@ -43,7 +43,7 @@ namespace BossMod.Endwalker.Ultimate.DSW2
     {
         public P2SanctityOfTheWard2HiemalStorm() : base(ActionID.MakeSpell(AID.HiemalStormAOE)) { }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             arena.AddCircle(pc.Position, 7, ArenaColor.Danger);
         }
@@ -149,7 +149,7 @@ namespace BossMod.Endwalker.Ultimate.DSW2
             return _preyTargets[playerSlot] ? PlayerPriority.Danger : PlayerPriority.Normal;
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             base.DrawArenaForeground(module, pcSlot, pc, arena);
 

@@ -179,7 +179,7 @@ namespace BossMod.RealmReborn.Extreme.Ex4Ifrit
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (module.PrimaryActor.TargetID == pc.InstanceID)
             {
@@ -299,7 +299,7 @@ namespace BossMod.RealmReborn.Extreme.Ex4Ifrit
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             base.DrawArenaForeground(module, pcSlot, pc, arena);
             var nextNail = NailKillOrder.FirstOrDefault();
@@ -407,7 +407,7 @@ namespace BossMod.RealmReborn.Extreme.Ex4Ifrit
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             arena.AddCircle(module.Bounds.Center + _safespotOffset, 2, ArenaColor.Safe);
         }

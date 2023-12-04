@@ -32,7 +32,7 @@ namespace BossMod.Endwalker.Savage.P8S2
                 hints.Add("Soak assigned tower!");
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             base.DrawArenaForeground(module, pcSlot, pc, arena);
 

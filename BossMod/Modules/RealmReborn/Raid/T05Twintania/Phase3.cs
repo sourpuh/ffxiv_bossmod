@@ -89,7 +89,7 @@ namespace BossMod.RealmReborn.Raid.T05Twintania
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var a in ActiveHygieia)
             {
@@ -136,7 +136,7 @@ namespace BossMod.RealmReborn.Raid.T05Twintania
                 hints.PlannedActions.Add((ActionID.MakeSpell(BLM.AID.Addle), module.PrimaryActor, (float)(_activation - module.WorldState.CurrentTime).TotalSeconds, false));
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var neurolink in module.Enemies(OID.Neurolink))
                 arena.AddCircle(neurolink.Position, T05Twintania.NeurolinkRadius, ArenaColor.Safe);

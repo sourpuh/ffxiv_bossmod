@@ -13,7 +13,7 @@ class BurningChains : Components.CastCounter
             hints.Add("Break chains!");
     }
 
-    public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+    public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
     {
         var partner = module.Raid[_tetherPartners[pcSlot]];
         if (partner != null)

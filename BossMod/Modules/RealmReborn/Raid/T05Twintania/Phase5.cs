@@ -49,7 +49,7 @@ namespace BossMod.RealmReborn.Raid.T05Twintania
             return player == Target ? PlayerPriority.Danger : PlayerPriority.Irrelevant;
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (Target != null)
                 foreach (var orb in Orbs)

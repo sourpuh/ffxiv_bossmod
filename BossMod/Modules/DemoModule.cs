@@ -17,12 +17,12 @@
                 hints.Add("Global");
             }
 
-            public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+            public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
             {
                 arena.ZoneCircle(module.Bounds.Center, 10, ArenaColor.AOE);
             }
 
-            public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+            public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
             {
                 arena.Actor(module.Bounds.Center, 0.Degrees(), ArenaColor.PC);
             }

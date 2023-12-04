@@ -14,7 +14,7 @@ namespace BossMod.Stormblood.Ultimate.UWU
             _orbs = module.Enemies(OID.Aetheroplasm);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var orb in _orbs.Where(o => !o.IsDead))
             {

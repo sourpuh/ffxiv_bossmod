@@ -35,7 +35,7 @@ namespace BossMod.Endwalker.Savage.P11SThemis
             return pcState.Tether != TetherType.None && pcState.PartnerSlot == playerSlot ? PlayerPriority.Danger : PlayerPriority.Irrelevant;
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             var pcState = _states[pcSlot];
             if (pcState.Tether != TetherType.None && module.Raid[pcState.PartnerSlot] is var partner && partner != null)

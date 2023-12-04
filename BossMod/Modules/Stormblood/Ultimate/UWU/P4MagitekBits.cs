@@ -14,7 +14,7 @@ namespace BossMod.Stormblood.Ultimate.UWU
             _bits = module.Enemies(OID.MagitekBit);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             arena.Actors(_bits, ArenaColor.Enemy);
         }

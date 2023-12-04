@@ -32,7 +32,7 @@ namespace BossMod.Endwalker.Extreme.Ex1Zodiark
                 hints.Add("GTFO from fire aoe!");
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var b in RotatedBirds(module))
                 _birdAOE.Draw(arena, b);
@@ -44,7 +44,7 @@ namespace BossMod.Endwalker.Extreme.Ex1Zodiark
                 arena.ZoneTri(module.Bounds.Center + c, RotatedPosition(module, c), module.Bounds.Center, ArenaColor.AOE);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_fireLine.Count == 2)
                 arena.AddLine(module.Bounds.Center + _fireLine[0], module.Bounds.Center + _fireLine[1], ArenaColor.Danger);

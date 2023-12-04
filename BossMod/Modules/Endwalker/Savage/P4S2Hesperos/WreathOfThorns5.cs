@@ -36,7 +36,7 @@ namespace BossMod.Endwalker.Savage.P4S2Hesperos
             hints.Add($"Order: {string.Join(" -> ", _playersOrder.Skip(_castsDone).Select(id => module.WorldState.Actors.Find(id)?.Name ?? "???"))}");
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             int order = _playersOrder.IndexOf(pc.InstanceID);
             if (order >= _castsDone && order < _towersOrder.Count)

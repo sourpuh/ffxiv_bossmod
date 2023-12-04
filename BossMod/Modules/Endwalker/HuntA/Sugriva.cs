@@ -39,7 +39,7 @@ namespace BossMod.Endwalker.HuntA.Sugriva
             return Casters.FirstOrDefault()?.CastInfo?.TargetID == player.InstanceID ? PlayerPriority.Interesting : PlayerPriority.Irrelevant;
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             base.DrawArenaForeground(module, pcSlot, pc, arena);
 
@@ -89,7 +89,7 @@ namespace BossMod.Endwalker.HuntA.Sugriva
             return player == _target ? PlayerPriority.Interesting : PlayerPriority.Irrelevant;
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_target != null)
                 arena.AddCircle(_target.Position, _shape.Radius, ArenaColor.Danger);

@@ -26,7 +26,7 @@ namespace BossMod.Endwalker.Savage.P8S1Hephaistos
                 hints.Add("GTFO from baited aoe!");
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var (_, player) in module.Raid.WithSlot().IncludedInMask(BaitingPlayers))
                 _shape.Outline(arena, module.PrimaryActor.Position, Angle.FromDirection(player.Position - module.PrimaryActor.Position));

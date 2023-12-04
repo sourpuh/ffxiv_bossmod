@@ -64,7 +64,7 @@ namespace BossMod.Endwalker.Savage.P5SProtoCarbuncle
             return PoisonStones.Select(o => new AOEInstance(ShapePoison, o.Position));
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             switch (State)
             {
@@ -166,7 +166,7 @@ namespace BossMod.Endwalker.Savage.P5SProtoCarbuncle
             return VenomPoolActive && player.Role == Role.Healer ? PlayerPriority.Interesting : PlayerPriority.Irrelevant;
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             base.DrawArenaForeground(module, pcSlot, pc, arena);
 

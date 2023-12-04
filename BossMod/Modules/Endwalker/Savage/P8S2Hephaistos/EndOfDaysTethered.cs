@@ -23,13 +23,13 @@ namespace BossMod.Endwalker.Savage.P8S2
                 hints.Add("Move away from other baits!");
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var t in _tethers)
                 _shape.Draw(arena, t.source);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var t in _tethers)
                 arena.AddLine(t.source.Position, t.target.Position, ArenaColor.Danger);

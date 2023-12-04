@@ -115,7 +115,7 @@ namespace BossMod.RealmReborn.Raid.T01Caduceus
             hints.AddForbiddenZone(blockedArea);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (int i in (ActivePlatforms ^ AllPlatforms).SetBits())
                 arena.AddPolygon(PlatformPoly(i), ArenaColor.Border);

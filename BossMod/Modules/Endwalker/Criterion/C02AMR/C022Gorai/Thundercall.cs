@@ -15,7 +15,7 @@ namespace BossMod.Endwalker.Criterion.C02AMR.C022Gorai
 
         public override IEnumerable<AOEInstance> ActiveAOEs(BossModule module, int slot, Actor actor) => _aoes;
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             arena.Actors(_orbs, ArenaColor.Object, true);
             if (_miniTarget != null)

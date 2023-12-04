@@ -127,7 +127,7 @@ namespace BossMod.Endwalker.Savage.P12S1Athena
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var chain in PositionHints(pcSlot))
                 foreach (var offset in chain.Take(1))

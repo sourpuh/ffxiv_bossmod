@@ -17,7 +17,7 @@
 
         private static WDir[] _corners = { new(), new(-1, -1), new(1, -1), new(-1, 1), new(1, 1) };
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_blockedCorner == Corner.None)
                 return;
@@ -42,7 +42,7 @@
             arena.ZoneRect(corner, new WDir(1, 0), _cornerHalfSize, _cornerHalfSize, _cornerHalfSize, ArenaColor.AOE);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             // inner border
             arena.PathLineTo(module.Bounds.Center + new WDir(-_cornerInner, -_cornerInner));

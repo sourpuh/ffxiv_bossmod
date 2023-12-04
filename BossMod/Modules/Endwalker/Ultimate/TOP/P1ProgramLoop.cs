@@ -51,7 +51,7 @@ namespace BossMod.Endwalker.Ultimate.TOP
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             var ps = PlayerStates[pcSlot];
             bool soakTowers = ps.Order == NextTowersOrder();

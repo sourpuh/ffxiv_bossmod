@@ -8,7 +8,7 @@
 
         public ForbiddenFruit10() : base(ActionID.MakeSpell(AID.BronzeBellows)) { }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             base.DrawArenaBackground(module, pcSlot, pc, arena);
             foreach (var (slot, target) in module.Raid.WithSlot(true))

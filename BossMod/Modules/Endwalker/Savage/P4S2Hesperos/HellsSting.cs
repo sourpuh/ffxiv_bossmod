@@ -20,7 +20,7 @@ namespace BossMod.Endwalker.Savage.P4S2Hesperos
                 hints.Add("GTFO from cone!");
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (NumCasts >= _directions.Count * 2)
                 return;

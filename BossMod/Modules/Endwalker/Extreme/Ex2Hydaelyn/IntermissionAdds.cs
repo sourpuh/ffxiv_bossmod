@@ -8,7 +8,7 @@ namespace BossMod.Endwalker.Extreme.Ex2Hydaelyn
     {
         private HashSet<ulong> _activeCrystals = new();
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var echo in module.Enemies(OID.Echo))
                 arena.Actor(echo, ArenaColor.Enemy);

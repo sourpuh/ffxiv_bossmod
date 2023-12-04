@@ -17,7 +17,7 @@ namespace BossMod.Endwalker.Extreme.Ex2Hydaelyn
                 hints.Add("Spread by roles!");
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             var pcRole = EffectiveRole(pc);
             var pcDir = Angle.FromDirection(pc.Position - module.PrimaryActor.Position);

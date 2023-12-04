@@ -4,7 +4,7 @@
     {
         public P1Cascade() : base(8, m => m.Enemies(OID.LiquidRage)) { }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             arena.Actors(module.Enemies(OID.Embolus), ArenaColor.Object, true);
         }

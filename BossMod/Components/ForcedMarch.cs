@@ -31,7 +31,7 @@ namespace BossMod.Components
                 hints.Add("Aim for safe spot!");
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var m in ForcedMovements(module, pc))
             {

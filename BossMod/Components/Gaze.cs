@@ -61,7 +61,7 @@ namespace BossMod.Components
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var eye in ActiveEyes(module, pcSlot, pc))
             {

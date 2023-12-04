@@ -47,7 +47,7 @@ namespace BossMod.Components
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             base.DrawArenaForeground(module, pcSlot, pc, arena);
             foreach (var a in ActiveActors)
@@ -87,7 +87,7 @@ namespace BossMod.Components
             UpdateState(instanceID, ((int)sides << 4) | ActorState(instanceID) & 0xF);
         }
 
-        private void DrawParry(MiniArena arena, Actor actor, Angle offset, Side active, Side imminent, Side check)
+        private void DrawParry(IArena arena, Actor actor, Angle offset, Side active, Side imminent, Side check)
         {
             if (active.HasFlag(check))
                 DrawParry(arena, actor, offset, ArenaColor.Enemy);
@@ -95,7 +95,7 @@ namespace BossMod.Components
                 DrawParry(arena, actor, offset, ArenaColor.Danger);
         }
 
-        private void DrawParry(MiniArena arena, Actor actor, Angle offset, uint color)
+        private void DrawParry(IArena arena, Actor actor, Angle offset, uint color)
         {
             var dir = actor.Rotation + offset;
             arena.PathArcTo(actor.Position, 1.5f, (dir - 45.Degrees()).Rad, (dir + 45.Degrees()).Rad);

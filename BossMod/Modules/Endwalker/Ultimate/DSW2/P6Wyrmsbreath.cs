@@ -46,14 +46,14 @@ namespace BossMod.Endwalker.Ultimate.DSW2
                 hints.Add(Glows.Raw == 3 ? "Tankbuster: shared" : "Tankbuster: solo");
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             Actor? partner = IgnoredPartner(module, pcSlot, pc);
             foreach (var bait in ActiveBaitsNotOn(pc).Where(b => b.Target != partner))
                 bait.Shape.Draw(arena, BaitOrigin(bait), bait.Rotation);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var bait in ActiveBaitsOn(pc))
                 bait.Shape.Outline(arena, BaitOrigin(bait), bait.Rotation);

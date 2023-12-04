@@ -29,7 +29,7 @@ namespace BossMod.Endwalker.Savage.P10SPandaemonium
                 hints.Add(shouldSoak ? "Soak the tower!" : "GTFO from tower!");
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             base.DrawArenaForeground(module, pcSlot, pc, arena);
             foreach (var t in _towers)

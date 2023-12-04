@@ -17,7 +17,7 @@ namespace BossMod.Endwalker.Savage.P2SHippokampos
                 hints.Add("Stack with healer!");
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var player in module.Raid.WithoutSlot())
             {

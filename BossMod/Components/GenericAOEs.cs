@@ -51,7 +51,7 @@ namespace BossMod.Components
                     hints.AddForbiddenZone(c.Shape, c.Origin, c.Rotation, c.Activation);
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var c in ActiveAOEs(module, pcSlot, pc))
                 c.Shape.Draw(arena, c.Origin, c.Rotation, c.Color);

@@ -44,7 +44,7 @@ namespace BossMod.Shadowbringers.Foray.Duel.Duel4Dabog
                 yield return new(_shape, s.Sphere.Position, s.RotNext, _activation, ArenaColor.Danger);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_spheres.Count == 4 && NumCasts == 0)
             {

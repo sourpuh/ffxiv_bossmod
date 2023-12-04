@@ -41,7 +41,7 @@ namespace BossMod.RealmReborn.Raid.T05Twintania
                 hints.AddForbiddenZone(ShapeDistance.Circle(t.Position, t.HitboxRadius + TwisterCushion));
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var twister in ActiveTwisters)
                 arena.AddCircle(twister.Position, twister.HitboxRadius, ArenaColor.Danger);
@@ -87,7 +87,7 @@ namespace BossMod.RealmReborn.Raid.T05Twintania
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var a in ActiveDreadknights)
             {

@@ -22,7 +22,7 @@ namespace BossMod.Components
             _actors = module.Enemies(_actorOID);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             arena.Actors(_actors, ArenaColor.Enemy);
         }

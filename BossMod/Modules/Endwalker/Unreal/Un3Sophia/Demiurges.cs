@@ -20,7 +20,7 @@ namespace BossMod.Endwalker.Unreal.Un3Sophia
             _third = module.Enemies(OID.Demiurge3);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             base.DrawArenaForeground(module, pcSlot, pc, arena);
             arena.Actors(_second, ArenaColor.Enemy);

@@ -128,7 +128,7 @@ namespace BossMod.Endwalker.Savage.P12S2PallasAthena
 
         public FactorIn() : base(ActionID.MakeSpell(AID.FactorIn), centerAtTarget: true) { }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             base.DrawArenaForeground(module, pcSlot, pc, arena);
             foreach (var s in _slimes)

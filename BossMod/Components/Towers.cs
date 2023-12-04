@@ -31,7 +31,7 @@ namespace BossMod.Components
         public List<Tower> Towers = new();
 
         // default tower styling
-        public static void DrawTower(MiniArena arena, WPos pos, float radius, bool safe) => arena.AddCircle(pos, radius, safe ? ArenaColor.Safe : ArenaColor.Danger, 2);
+        public static void DrawTower(IArena arena, WPos pos, float radius, bool safe) => arena.AddCircle(pos, radius, safe ? ArenaColor.Safe : ArenaColor.Danger, 2);
 
         public GenericTowers(ActionID aid = default) : base(aid) { }
 
@@ -55,7 +55,7 @@ namespace BossMod.Components
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var t in Towers)
                 DrawTower(arena, t.Position, t.Radius, !t.ForbiddenSoakers[pcSlot]);

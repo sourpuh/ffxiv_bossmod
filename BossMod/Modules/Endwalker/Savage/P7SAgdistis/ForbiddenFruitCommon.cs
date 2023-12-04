@@ -63,7 +63,7 @@ namespace BossMod.Endwalker.Savage.P7SAgdistis
             return _tetherClips[playerSlot, pcSlot] || _tetherClips[pcSlot, playerSlot] ? PlayerPriority.Danger : PlayerPriority.Normal;
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             var tetherSource = TetherSources[pcSlot];
             if (tetherSource != null)

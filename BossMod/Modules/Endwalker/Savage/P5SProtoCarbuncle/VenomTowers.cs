@@ -13,7 +13,7 @@ namespace BossMod.Endwalker.Savage.P5SProtoCarbuncle
 
         public bool Active => _activeTowerOffsets.Count > 0;
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var t in _activeTowerOffsets)
             {

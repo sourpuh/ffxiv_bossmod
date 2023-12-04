@@ -50,7 +50,7 @@ namespace BossMod.Endwalker.Savage.P10SPandaemonium
             return ImminentTurretsWithTargets(module).Any(t => t.target == player) ? PlayerPriority.Interesting : PlayerPriority.Irrelevant;
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var t in ImminentTurretsWithTargets(module))
             {

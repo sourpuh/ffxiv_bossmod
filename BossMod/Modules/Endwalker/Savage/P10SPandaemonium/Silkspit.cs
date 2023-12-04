@@ -21,7 +21,7 @@ namespace BossMod.Endwalker.Savage.P10SPandaemonium
                 hints.Add("GTFO from pillars!");
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             base.DrawArenaBackground(module, pcSlot, pc, arena);
             arena.Actors(_pillars, ArenaColor.Object, true);

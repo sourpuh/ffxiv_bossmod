@@ -37,7 +37,7 @@ namespace BossMod.Endwalker.Ultimate.TOP
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             var partner = FindPartner(module, pcSlot);
             if (partner != null)
@@ -173,7 +173,7 @@ namespace BossMod.Endwalker.Ultimate.TOP
             _source = module.Enemies(OID.OpticalUnit).FirstOrDefault();
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             arena.Actor(_source, ArenaColor.Object, true);
             var pos = AssignedPosition(module, pcSlot);
@@ -240,7 +240,7 @@ namespace BossMod.Endwalker.Ultimate.TOP
                 _firstGroup = module.Raid.WithSlot(true).WhereSlot(s => _synergy.PlayerStates[s].Group == 1).Mask();
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             var pos = AssignedPosition(module, pcSlot);
             if (pos != default)

@@ -21,7 +21,7 @@ namespace BossMod.Stormblood.Ultimate.UWU
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_baiters[pcSlot])
                 arena.AddCircle(pc.Position, Shape.Radius, ArenaColor.Safe);

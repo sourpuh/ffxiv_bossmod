@@ -27,7 +27,7 @@ namespace BossMod.Endwalker.Unreal.Un2Sephirot
                 hints.Add("GTFO from tower!", soaking);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var t in _towers)
                 arena.AddCircle(t.Position, _radius, ArenaColor.Danger);

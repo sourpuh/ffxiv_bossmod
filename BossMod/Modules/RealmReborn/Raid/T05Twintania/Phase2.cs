@@ -22,7 +22,7 @@ namespace BossMod.RealmReborn.Raid.T05Twintania
                 hints.Add($"Next fireball in ~{(NextAt - module.WorldState.CurrentTime).TotalSeconds:f1}s");
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (Target != null)
                 arena.AddCircle(Target.Position, Radius, ArenaColor.Safe);

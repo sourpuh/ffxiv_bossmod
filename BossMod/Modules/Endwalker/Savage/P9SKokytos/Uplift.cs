@@ -6,7 +6,7 @@
 
         public Uplift() : base(ActionID.MakeSpell(AID.Uplift), new AOEShapeRect(4, 8)) { }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (WallDirection != null)
             {

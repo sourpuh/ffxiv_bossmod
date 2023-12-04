@@ -40,7 +40,7 @@ namespace BossMod.Endwalker.Savage.P10SPandaemonium
             return player == _stackTarget ? PlayerPriority.Interesting : _spreadTargets.Contains(player) ? PlayerPriority.Danger : PlayerPriority.Irrelevant;
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             bool isSpread = _spreadTargets.Contains(pc);
             if (_stackTarget != null && _stackTarget != pc)
@@ -49,7 +49,7 @@ namespace BossMod.Endwalker.Savage.P10SPandaemonium
                 _shapeStack.Draw(arena, module.PrimaryActor.Position, Angle.FromDirection(t.Position - module.PrimaryActor.Position), ArenaColor.AOE);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (pc == _stackTarget)
                 _shapeStack.Outline(arena, module.PrimaryActor.Position, Angle.FromDirection(pc.Position - module.PrimaryActor.Position), ArenaColor.Safe);

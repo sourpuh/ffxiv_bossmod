@@ -48,14 +48,14 @@ namespace BossMod.Endwalker.Savage.P4S2Hesperos
             }
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (CurState == State.FirstAOEs || CurState == State.LastAOEs)
                 foreach (var aoe in CurState == State.FirstAOEs ? _firstAOEs : _lastAOEs)
                     arena.ZoneCircle(aoe.Position, P4S2.WreathAOERadius, ArenaColor.AOE);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (CurState == State.Towers)
             {

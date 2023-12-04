@@ -24,7 +24,7 @@ namespace BossMod.Endwalker.Criterion.C01ASS.C012Gladiator
             // TODO: implement
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (Active)
                 foreach (var c in SafeCenters(module, _debuffs[pcSlot]))

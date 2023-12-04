@@ -20,7 +20,7 @@ namespace BossMod.Endwalker.Unreal.Un1Ultima
                 hints.Add("GTFO from aoe!");
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var (a, aoe) in _activeLocationTargetedAOEs)
                 aoe.Draw(arena, a.CastInfo!.LocXZ);

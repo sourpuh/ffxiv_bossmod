@@ -35,7 +35,7 @@ namespace BossMod.Endwalker.Extreme.Ex2Hydaelyn
             return position.InCone(origin, center, halfAngle);
         }
 
-        protected void DrawSafeCone(MiniArena arena, WPos origin, WPos blocking)
+        protected void DrawSafeCone(IArena arena, WPos origin, WPos blocking)
         {
             var toBlock = blocking - origin;
             var dist = toBlock.Length();

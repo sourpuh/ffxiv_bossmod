@@ -29,7 +29,7 @@ namespace BossMod.RealmReborn.Extreme.Ex2Garuda
                 hints.AddForbiddenZone(ShapeDistance.InvertedCircle(shield.Position, _radius));
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             var shield = ActiveShield;
             if (shield != null)

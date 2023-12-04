@@ -59,7 +59,7 @@ namespace BossMod.Endwalker.HuntA.Gurangatch
             }
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             base.DrawArenaBackground(module, pcSlot, pc, arena);
             if (_remainingSlams > 0 && _slamDirIncrement.Rad != MathF.PI)

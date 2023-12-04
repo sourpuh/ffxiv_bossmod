@@ -84,7 +84,7 @@ namespace BossMod.Endwalker.Unreal.Un1Ultima
             // TODO: large detonations
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_magitekOffset != null)
                 _aoeMagitekRay.Draw(arena, module.PrimaryActor.Position, module.PrimaryActor.Rotation + _magitekOffset.Value);
@@ -93,7 +93,7 @@ namespace BossMod.Endwalker.Unreal.Un1Ultima
                 _aoeAssaultCannon.Draw(arena, bit);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             var mt = module.WorldState.Actors.Find(module.PrimaryActor.TargetID);
             foreach (var player in module.Raid.WithoutSlot().Exclude(pc))

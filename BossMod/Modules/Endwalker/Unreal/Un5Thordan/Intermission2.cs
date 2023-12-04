@@ -35,7 +35,7 @@ class SwordShieldOfTheHeavens : BossComponent
             hints.Add($"Focus on {focus.actor.Name}!");
     }
 
-    public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+    public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
     {
         foreach (var a in _adds)
             arena.Actor(a.actor, ArenaColor.Enemy);

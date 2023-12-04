@@ -124,7 +124,7 @@ namespace BossMod.Endwalker.Savage.P9SKokytos
             base.AddHints(module, slot, actor, hints, movementHints);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (NumTowers < NumCasts)
                 arena.AddCircle(_explodeOrder[NumTowers], 3, _soakerOrder[NumTowers] == pc ? ArenaColor.Safe : ArenaColor.Danger, 2);

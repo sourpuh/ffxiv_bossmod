@@ -32,7 +32,7 @@ namespace BossMod.Endwalker.Savage.P12S2PallasAthena
             return _partner[pcSlot] == playerSlot ? PlayerPriority.Danger : PlayerPriority.Irrelevant;
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (module.Raid[_partner[pcSlot]] is var partner && partner != null)
                 arena.AddLine(pc.Position, partner.Position, ArenaColor.Danger);
@@ -180,14 +180,14 @@ namespace BossMod.Endwalker.Savage.P12S2PallasAthena
             return _tethers.Any(t => t.target == player) ? PlayerPriority.Danger : PlayerPriority.Irrelevant;
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_vulnerable[pcSlot]) // TODO: reconsider
                 foreach (var t in _tethers.Where(t => t.target != pc))
                     _shape.Draw(arena, t.source.Position, Angle.FromDirection(t.target.Position - t.source.Position));
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var t in _tethers)
             {

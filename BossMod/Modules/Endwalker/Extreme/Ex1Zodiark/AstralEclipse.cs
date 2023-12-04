@@ -30,14 +30,14 @@ namespace BossMod.Endwalker.Extreme.Ex1Zodiark
                     movementHints.Add(from, to, ArenaColor.Safe);
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             int nextPattern = _patterns.SkipWhile(p => p == 0).FirstOrDefault();
             foreach (var p in PatternSpots(module, nextPattern))
                 _aoe.Draw(arena, p);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var (from, to) in EnumMovementHints(module, pc.Position))
                 arena.AddLine(from, to, ArenaColor.Safe);

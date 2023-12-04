@@ -14,7 +14,7 @@
                 hints.Add("GTFO from tankbuster!");
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_target != null)
                 arena.AddCircle(_target.Position, _radius, ArenaColor.Danger);

@@ -32,7 +32,7 @@
             }
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_singlePos != null)
             {
@@ -94,7 +94,7 @@
                 || actor.Position.InCircle(module.Bounds.Center + offset, _multiRadius);
         }
 
-        private void DrawPair(MiniArena arena, Angle direction, bool imminent)
+        private void DrawPair(IArena arena, Angle direction, bool imminent)
         {
             var offset = _multiPairOffset * direction.ToDirection();
             arena.ZoneCircle(arena.Bounds.Center + offset, _multiRadius, imminent ? ArenaColor.Danger : ArenaColor.AOE);

@@ -51,7 +51,7 @@ namespace BossMod.RealmReborn.Trial.T08ThornmarchH
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (int i in _activeTowers.SetBits())
                 arena.AddCircle(module.Bounds.Center + _towerOffsets[i], _towerRadius, _soakedTowers[i] ? ArenaColor.Safe : ArenaColor.Danger);

@@ -43,7 +43,7 @@ namespace BossMod.Endwalker.Ultimate.DSW2
 
         public override PlayerPriority CalcPriority(BossModule module, int pcSlot, Actor pc, int playerSlot, Actor player, ref uint customColor) => PlayerPriority.Normal;
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             base.DrawArenaForeground(module, pcSlot, pc, arena);
             foreach (var safespot in EnumSafeSpots(module, pc))
@@ -143,7 +143,7 @@ namespace BossMod.Endwalker.Ultimate.DSW2
             }
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var source in _chargeSources)
             {
@@ -155,7 +155,7 @@ namespace BossMod.Endwalker.Ultimate.DSW2
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             // draw tethers
             foreach (var source in _chargeSources)

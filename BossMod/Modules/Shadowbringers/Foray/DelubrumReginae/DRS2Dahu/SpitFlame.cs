@@ -27,7 +27,7 @@ namespace BossMod.Shadowbringers.Foray.DelubrumReginae.DRS2Dahu
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             arena.Actors(_adds, ArenaColor.Object, true);
             base.DrawArenaForeground(module, pcSlot, pc, arena);

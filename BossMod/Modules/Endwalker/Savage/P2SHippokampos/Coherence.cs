@@ -63,13 +63,13 @@ namespace BossMod.Endwalker.Savage.P2SHippokampos
             }
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_rayTarget != null)
                 _rayShape.Draw(arena, module.PrimaryActor.Position, 0.Degrees());
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             // TODO: i'm not sure what are the exact mechanics - flare is probably distance-based, and ray is probably shared damage cast at closest target?..
             var head = module.Enemies(OID.CataractHead).FirstOrDefault();

@@ -59,7 +59,7 @@ namespace BossMod.Endwalker.Criterion.C02AMR.C023Moko
                 hints.Add($"Untethered bait: {_curMechanic}");
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             base.DrawArenaForeground(module, pcSlot, pc, arena);
 

@@ -43,7 +43,7 @@ namespace BossMod.Endwalker.Ultimate.DSW1
             return _baiters[playerSlot] ? PlayerPriority.Danger : PlayerPriority.Normal;
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var (_, player) in module.Raid.WithSlot().IncludedInMask(_baiters))
                 arena.AddCircle(player.Position, _radius, ArenaColor.Danger);

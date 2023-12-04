@@ -16,7 +16,7 @@ namespace BossMod.Stormblood.Ultimate.UWU
             _sisters = module.Enemies(OID.GarudaSister);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var s in EnumerateTetherSources(module))
             {

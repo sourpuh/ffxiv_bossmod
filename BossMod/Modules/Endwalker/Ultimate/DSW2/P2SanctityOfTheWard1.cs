@@ -25,7 +25,7 @@ namespace BossMod.Endwalker.Ultimate.DSW2
             Source = module.Enemies(OID.SerZephirin).FirstOrDefault();
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             base.DrawArenaForeground(module, pcSlot, pc, arena);
 
@@ -90,7 +90,7 @@ namespace BossMod.Endwalker.Ultimate.DSW2
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             arena.Actors(Charges.Where(c => c.ChargeAOEs.Count > 0).Select(c => c.Source), ArenaColor.Enemy, true);
         }
@@ -266,7 +266,7 @@ namespace BossMod.Endwalker.Ultimate.DSW2
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var safespot in MovementHintOffsets(pcSlot).Take(1))
             {

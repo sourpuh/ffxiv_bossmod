@@ -103,7 +103,7 @@ namespace BossMod.Endwalker.Ultimate.DSW2
                 : PlayerPriority.Normal;
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_playerIcons[pcSlot] == 0)
                 return;

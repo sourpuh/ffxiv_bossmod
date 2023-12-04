@@ -73,7 +73,7 @@ namespace BossMod.Components
             return PlayerPriority.Irrelevant;
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             // show tethered targets with circles
             foreach (var side in _tethers)

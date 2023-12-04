@@ -123,7 +123,7 @@ namespace BossMod.Shadowbringers.FATE.Formidable
     {
         private List<Actor> _activeMissiles = new();
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var m in _activeMissiles)
             {
@@ -170,7 +170,7 @@ namespace BossMod.Shadowbringers.FATE.Formidable
             _shape = shape;
             _oid = oid;
             _aid = aid;
-            _delay = delay; 
+            _delay = delay;
         }
 
         public override IEnumerable<AOEInstance> ActiveAOEs(BossModule module, int slot, Actor actor)

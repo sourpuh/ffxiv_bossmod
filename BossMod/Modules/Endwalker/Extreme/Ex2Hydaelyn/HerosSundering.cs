@@ -41,13 +41,13 @@
             }
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_target != null)
                 _aoeShape.Draw(arena, module.PrimaryActor.Position, Angle.FromDirection(_target.Position - module.PrimaryActor.Position));
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (pc == _target)
             {

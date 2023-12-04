@@ -23,7 +23,7 @@ namespace BossMod.Stormblood.Ultimate.UWU
                     movementHints.Add(h);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var h in EnumerateHints(pc.Position))
                 arena.AddLine(h.from, h.to, h.color);

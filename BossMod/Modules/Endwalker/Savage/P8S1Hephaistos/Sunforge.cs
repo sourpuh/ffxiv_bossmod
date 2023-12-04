@@ -4,7 +4,7 @@
     {
         public SunforgeCenterHint() : base(ActionID.MakeSpell(AID.SunforgeCenter), "Avoid center") { }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (Active)
             {
@@ -18,7 +18,7 @@
     {
         public SunforgeSidesHint() : base(ActionID.MakeSpell(AID.SunforgeSides), "Avoid sides") { }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (Active)
             {

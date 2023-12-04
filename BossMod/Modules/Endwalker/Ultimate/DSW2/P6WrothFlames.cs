@@ -33,7 +33,7 @@ namespace BossMod.Endwalker.Ultimate.DSW2
                 movementHints.Add(actor.Position, _startingSpot, ArenaColor.Safe);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (ShowStartingSpot)
                 arena.AddCircle(_startingSpot, 1, ArenaColor.Safe);
@@ -107,7 +107,7 @@ namespace BossMod.Endwalker.Ultimate.DSW2
                     movementHints.Add(actor.Position, p, ArenaColor.Safe);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             base.DrawArenaForeground(module, pcSlot, pc, arena);
             foreach (var p in SafeSpots(module, pc))

@@ -92,13 +92,13 @@ namespace BossMod.Endwalker.Savage.P1SErichthonios
             hints.Add($"Order: {_curState}, pattern: {_pattern}.");
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var c in _delimiterCenters)
                 _delimiterAOE.Draw(arena, c.Item1, c.Item2);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_playerAssignment != null)
                 foreach (var (from, to, color) in EnumMovementHints(module, pc.Position, _playerAssignment[pcSlot]))

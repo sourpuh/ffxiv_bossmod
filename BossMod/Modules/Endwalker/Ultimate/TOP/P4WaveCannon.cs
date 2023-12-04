@@ -67,7 +67,7 @@ namespace BossMod.Endwalker.Ultimate.TOP
                 movementHints.Add(actor.Position, module.Bounds.Center + 12 * safeDir.ToDirection(), ArenaColor.Safe);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (Imminent)
                 foreach (var (_, p) in module.Raid.WithSlot(true).IncludedInMask(_targets))

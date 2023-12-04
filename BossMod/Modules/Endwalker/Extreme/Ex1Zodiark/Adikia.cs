@@ -18,7 +18,7 @@ namespace BossMod.Endwalker.Extreme.Ex1Zodiark
                 hints.Add("GTFO from side smash aoe!");
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var c in _casters)
                 _shape.Draw(arena, c);

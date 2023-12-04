@@ -8,7 +8,7 @@ namespace BossMod.Endwalker.Savage.P7SAgdistis
 
         public ForbiddenFruit4() : base(ActionID.MakeSpell(AID.BullishSwipeAOE)) { }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             base.DrawArenaForeground(module, pcSlot, pc, arena);
             if (NumAssignedTethers > 0 && !MinotaursBaited && TetherSources[pcSlot] == null)

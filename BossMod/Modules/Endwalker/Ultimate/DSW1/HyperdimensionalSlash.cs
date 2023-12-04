@@ -71,7 +71,7 @@ namespace BossMod.Endwalker.Ultimate.DSW1
                 hints.Add("Stack with others!");
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_laserTargets.None())
                 return;
@@ -81,7 +81,7 @@ namespace BossMod.Endwalker.Ultimate.DSW1
             _aoeCone.Draw(arena, module.Bounds.Center, _coneDir);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             for (int i = 0; i < _tears.Count; ++i)
                 arena.AddCircle(_tears[i].Pos, _linkRadius, _riskyTears[i] ? ArenaColor.Danger : ArenaColor.Safe);

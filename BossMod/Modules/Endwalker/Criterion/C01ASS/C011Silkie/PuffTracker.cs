@@ -8,7 +8,7 @@ namespace BossMod.Endwalker.Criterion.C01ASS.C011Silkie
         public List<Actor> ChillingPuffs = new();
         public List<Actor> FizzlingPuffs = new();
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             arena.Actors(BracingPuffs, 0xff80ff80, true);
             arena.Actors(ChillingPuffs, 0xffff8040, true);

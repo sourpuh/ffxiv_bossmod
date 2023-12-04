@@ -75,7 +75,7 @@ namespace BossMod.Endwalker.Extreme.Ex7Zeromus
             return _partners[pcSlot] == playerSlot ? PlayerPriority.Interesting : PlayerPriority.Irrelevant;
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             var partner = module.Raid[_partners[pcSlot]];
             if (partner != null)

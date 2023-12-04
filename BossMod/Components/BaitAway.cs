@@ -71,7 +71,7 @@ namespace BossMod.Components
             return ActiveBaitsOn(player).Any() ? BaiterPriority : PlayerPriority.Irrelevant;
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (!IgnoreOtherBaits)
                 foreach (var bait in ActiveBaitsNotOn(pc))
@@ -79,7 +79,7 @@ namespace BossMod.Components
                         bait.Shape.Draw(arena, BaitOrigin(bait), bait.Rotation);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var bait in ActiveBaitsOn(pc))
             {
@@ -121,7 +121,7 @@ namespace BossMod.Components
             TID = tetherID;
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             base.DrawArenaForeground(module, pcSlot, pc, arena);
             if (DrawTethers)

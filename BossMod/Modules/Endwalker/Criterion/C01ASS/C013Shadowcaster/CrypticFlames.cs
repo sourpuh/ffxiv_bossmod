@@ -16,7 +16,7 @@ namespace BossMod.Endwalker.Criterion.C01ASS.C013Shadowcaster
                 hints.Add($"Break order: {order}", order == CurrentBreakOrder);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             var order = _playerOrder[pcSlot];
             foreach (var l in _lasers)

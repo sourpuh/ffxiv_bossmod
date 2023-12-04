@@ -84,7 +84,7 @@ namespace BossMod.RealmReborn.Dungeon.D16Amdapor.D163Anantaboga
             return player == _target ? PlayerPriority.Danger : PlayerPriority.Irrelevant;
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             _shape.Outline(arena, _target);
         }

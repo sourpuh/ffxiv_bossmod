@@ -10,10 +10,10 @@ namespace BossMod
     //                       rotation 0 corresponds to South, and increases counterclockwise (so East is +pi/2, North is pi, West is -pi/2)
     // - camera azimuth 0 correpsonds to camera looking North and increases counterclockwise
     // - screen coordinates - X points left to right, Y points top to bottom
-    public class MiniArena
+    public class MiniArena : IArena
     {
         public BossModuleConfig Config { get; init; }
-        public ArenaBounds Bounds;
+        public ArenaBounds Bounds { get; set; }
 
         public float ScreenHalfSize => 150 * Config.ArenaScale;
         public float ScreenMarginSize => 20 * Config.ArenaScale;
@@ -177,17 +177,6 @@ namespace BossMod
                 drawlist.AddTriangleFilled(WorldPositionToScreenPosition(p1), WorldPositionToScreenPosition(p2), WorldPositionToScreenPosition(p3), color);
             drawlist.Flags = restoreFlags;
         }
-
-        // draw zones - these are filled primitives clipped to various borders
-        public void ZoneCone(WPos center, float innerRadius, float outerRadius, Angle centerDirection, Angle halfAngle, uint color) => Zone(Bounds.ClipAndTriangulateCone(center, innerRadius, outerRadius, centerDirection, halfAngle), color);
-        public void ZoneCircle(WPos center, float radius, uint color) => Zone(Bounds.ClipAndTriangulateCircle(center, radius), color);
-        public void ZoneDonut(WPos center, float innerRadius, float outerRadius, uint color) => Zone(Bounds.ClipAndTriangulateDonut(center, innerRadius, outerRadius), color);
-        public void ZoneTri(WPos a, WPos b, WPos c, uint color) => Zone(Bounds.ClipAndTriangulateTri(a, b, c), color);
-        public void ZoneIsoscelesTri(WPos apex, WDir height, WDir halfBase, uint color) => Zone(Bounds.ClipAndTriangulateIsoscelesTri(apex, height, halfBase), color);
-        public void ZoneIsoscelesTri(WPos apex, Angle direction, Angle halfAngle, float height, uint color) => Zone(Bounds.ClipAndTriangulateIsoscelesTri(apex, direction, halfAngle, height), color);
-        public void ZoneRect(WPos origin, WDir direction, float lenFront, float lenBack, float halfWidth, uint color) => Zone(Bounds.ClipAndTriangulateRect(origin, direction, lenFront, lenBack, halfWidth), color);
-        public void ZoneRect(WPos origin, Angle direction, float lenFront, float lenBack, float halfWidth, uint color) => Zone(Bounds.ClipAndTriangulateRect(origin, direction, lenFront, lenBack, halfWidth), color);
-        public void ZoneRect(WPos start, WPos end, float halfWidth, uint color) => Zone(Bounds.ClipAndTriangulateRect(start, end, halfWidth), color);
 
         public void TextScreen(Vector2 center, string text, uint color, float fontSize = 17)
         {

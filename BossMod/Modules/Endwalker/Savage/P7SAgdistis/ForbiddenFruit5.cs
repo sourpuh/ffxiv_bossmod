@@ -16,7 +16,7 @@ namespace BossMod.Endwalker.Savage.P7SAgdistis
             _towers = module.Enemies(OID.Tower);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             var tetherSource = TetherSources[pcSlot];
             if (tetherSource != null)

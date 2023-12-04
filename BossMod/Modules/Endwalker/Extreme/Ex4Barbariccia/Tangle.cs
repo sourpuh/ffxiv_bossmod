@@ -14,7 +14,7 @@ namespace BossMod.Endwalker.Extreme.Ex4Barbariccia
 
         public Tangle() : base(ActionID.MakeSpell(AID.Tangle), new AOEShapeCircle(6)) { }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             var tether = _tethers[pcSlot];
             if (tether != null)

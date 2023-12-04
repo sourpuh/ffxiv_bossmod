@@ -22,7 +22,7 @@
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             var pos = GetSafeZone(module, pcSlot);
             if (pos != null)

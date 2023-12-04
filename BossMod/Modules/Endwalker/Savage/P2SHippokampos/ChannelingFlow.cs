@@ -52,7 +52,7 @@ namespace BossMod.Endwalker.Savage.P2SHippokampos
                 hints.Add("GTFO from imminent flow!");
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var (player, dir) in ActiveArrows(module))
             {

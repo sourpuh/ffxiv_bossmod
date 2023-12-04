@@ -86,7 +86,7 @@ namespace BossMod.Endwalker.Extreme.Ex7Zeromus
             _chasers.RemoveAll(c => (c.Player.IsDestroyed || c.Player.IsDead) && (c.Pos == null || c.NumCasts > 0));
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var c in _chasers)
             {

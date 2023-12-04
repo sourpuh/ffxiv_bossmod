@@ -26,7 +26,7 @@ namespace BossMod.Endwalker.Criterion.C02AMR.C022Gorai
             base.AddHints(module, slot, actor, hints, movementHints);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             base.DrawArenaForeground(module, pcSlot, pc, arena);
             if (!_baitsDone)

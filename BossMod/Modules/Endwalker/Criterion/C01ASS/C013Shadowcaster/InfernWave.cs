@@ -84,7 +84,7 @@ namespace BossMod.Endwalker.Criterion.C01ASS.C013Shadowcaster
                 hints.Add("GTFO from other bait!");
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (!ShowHints)
                 return;
@@ -94,7 +94,7 @@ namespace BossMod.Endwalker.Criterion.C01ASS.C013Shadowcaster
                     _shape.Draw(arena, b.Source.Position, t.dir);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach (var b in ActiveBeacons())
                 arena.Actor(b.Source, ArenaColor.Object, true);

@@ -8,7 +8,7 @@ namespace UIDev
 {
     class MiniArenaTest : TestWindow
     {
-        private MiniArena _arena = new(new(), new ArenaBoundsSquare(new(100, 100), 20));
+        private IArena _arena = new MiniArena(new(), new ArenaBoundsSquare(new(100, 100), 20));
         private bool _arenaIsCircle = false;
         private float _azimuth = -72;
         private float _altitude = 90;

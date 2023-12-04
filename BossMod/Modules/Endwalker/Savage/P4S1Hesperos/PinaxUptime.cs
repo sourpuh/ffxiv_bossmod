@@ -3,7 +3,7 @@
     // component showing where to drag boss for max pinax uptime
     class PinaxUptime : BossComponent
     {
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (pc.Role != Role.Tank)
                 return;

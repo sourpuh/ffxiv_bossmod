@@ -14,7 +14,7 @@
 
         public static bool InsideMainPlatform(BossModule module, WPos pos) => pos.InRect(new(module.Bounds.Center.X, MainPlatformCenterZ), new WDir(1, 0), MainPlatformHalfSize.X, MainPlatformHalfSize.X, MainPlatformHalfSize.Z);
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             DrawPlatform(arena, new(module.Bounds.Center.X, MainPlatformCenterZ), MainPlatformHalfSize);
             DrawPlatform(arena, new(module.Bounds.Center.X + SidePlatformOffsetX, SidePlayformCenterZ), SidePlatformHalfSize);
@@ -37,13 +37,13 @@
             }
         }
 
-        private void DrawPlatform(MiniArena arena, WPos center, WDir cornerOffset)
+        private void DrawPlatform(IArena arena, WPos center, WDir cornerOffset)
         {
             var otherCorner = new WDir(cornerOffset.X, -cornerOffset.Z);
             arena.AddQuad(center - cornerOffset, center - otherCorner, center + cornerOffset, center + otherCorner, ArenaColor.Border);
         }
 
-        private void DrawBridge(MiniArena arena, float dir)
+        private void DrawBridge(IArena arena, float dir)
         {
             var p1 = arena.Bounds.Center + new WDir(MainPlatformHalfSize.X * dir, 0);
             var p2 = arena.Bounds.Center + new WDir((SidePlatformOffsetX - SidePlatformHalfSize.X) * dir, 0);

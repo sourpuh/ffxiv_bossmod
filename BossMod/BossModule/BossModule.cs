@@ -27,7 +27,7 @@ namespace BossMod
         public WorldState WorldState { get; init; }
         public Actor PrimaryActor { get; init; }
         public BossModuleConfig WindowConfig { get; init; }
-        public MiniArena Arena { get; init; }
+        public IArena Arena { get; init; }
         public StateMachine StateMachine { get; private init; }
         public ModuleRegistry.Info? Info { get; private init; }
         // TODO: this should be moved outside...
@@ -106,7 +106,7 @@ namespace BossMod
             WorldState = ws;
             PrimaryActor = primary;
             WindowConfig = Service.Config.Get<BossModuleConfig>();
-            Arena = new(WindowConfig, bounds);
+            Arena = new MiniArena(WindowConfig, bounds);
 
             Info = ModuleRegistry.FindByOID(primary.OID);
             StateMachine = Info?.StatesType != null ? ((StateMachineBuilder)Activator.CreateInstance(Info.StatesType, this)!).Build() : new(new());

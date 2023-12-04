@@ -28,7 +28,7 @@ namespace BossMod.RealmReborn.Extreme.Ex2Garuda
                 hints.AddForbiddenZone(ShapeDistance.Circle(module.PrimaryActor.Position, _radius), _expectedNext);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_expectedNext != default && (_expectedNext - module.WorldState.CurrentTime).TotalSeconds < 3)
                 arena.AddCircle(module.PrimaryActor.Position, _radius, ArenaColor.Danger);

@@ -23,7 +23,7 @@ namespace BossMod.Endwalker.Savage.P12S1Athena
                         CurrentBaits.Add(new(s, t, _shape));
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             base.DrawArenaForeground(module, pcSlot, pc, arena);
             arena.Actors(_sources, ArenaColor.Object, true);

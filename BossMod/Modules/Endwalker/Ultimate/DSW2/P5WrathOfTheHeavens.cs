@@ -14,7 +14,7 @@ namespace BossMod.Endwalker.Ultimate.DSW2
                 movementHints.Add(actor.Position, safespot, ArenaColor.Safe);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             base.DrawArenaForeground(module, pcSlot, pc, arena);
             if (IsSpreadTarget(pc) && SafeSpot(module) is var safespot && safespot != default)
@@ -55,7 +55,7 @@ namespace BossMod.Endwalker.Ultimate.DSW2
                 movementHints.Add(actor.Position, safespot, ArenaColor.Safe);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             base.DrawArenaForeground(module, pcSlot, pc, arena);
             if (SafeSpot(module, pc) is var safespot && safespot != default)
@@ -160,7 +160,7 @@ namespace BossMod.Endwalker.Ultimate.DSW2
                 movementHints.Add(actor.Position, SafeSpot(module), ArenaColor.Safe);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_target == pc)
                 arena.AddCircle(SafeSpot(module), 1, ArenaColor.Safe);
@@ -212,7 +212,7 @@ namespace BossMod.Endwalker.Ultimate.DSW2
 
         public P5WrathOfTheHeavensEmptyDimension() : base(ActionID.MakeSpell(AID.EmptyDimension), new AOEShapeDonut(6, 70)) { }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (Casters.Count == 0 && KnowPosition)
                 arena.AddCircle(_predicted, 6, ArenaColor.Safe, 2);

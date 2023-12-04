@@ -39,7 +39,7 @@ namespace BossMod.Endwalker.Ultimate.DSW2
                 movementHints.Add(actor.Position, (actor == _vow ? _target : _vow).Position, ArenaColor.Safe);
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             base.DrawArenaForeground(module, pcSlot, pc, arena);
             if (_vow != null && _target != null && (pc == _vow || pc == _target))

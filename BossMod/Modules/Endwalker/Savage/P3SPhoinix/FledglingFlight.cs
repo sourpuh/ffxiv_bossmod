@@ -48,7 +48,7 @@ namespace BossMod.Endwalker.Savage.P3SPhoinix
             }
         }
 
-        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaForeground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_sources.Count == 0)
                 return;
@@ -62,7 +62,7 @@ namespace BossMod.Endwalker.Savage.P3SPhoinix
                 arena.AddCircle(eyePos.Value, 1, ArenaColor.Safe);
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             foreach ((var source, var dir) in _sources)
             {

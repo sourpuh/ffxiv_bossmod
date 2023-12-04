@@ -78,7 +78,7 @@ namespace BossMod.RealmReborn.Dungeon.D08Qarn.D081Teratotaur
             }
         }
 
-        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, MiniArena arena)
+        public override void DrawArenaBackground(BossModule module, int pcSlot, Actor pc, IArena arena)
         {
             if (_dooms[pcSlot])
                 _platformShape.Draw(arena, ActivePlatform, ArenaColor.SafeFromAOE);
