@@ -36,10 +36,7 @@ public sealed class PictoArena(BossModuleConfig config, WPos center, ArenaBounds
     } = bounds;
 
     public float ScreenHalfSize => 150 * Config.ArenaScale;
-    public float ScreenMarginSize => 20 * Config.ArenaScale;
-
-    // these are set at the beginning of each draw
-    public Vector2 ScreenCenter { get; private set; }
+    public float FloorHeight = 0;
 
     public bool InBounds(WPos position) => Bounds.Contains(position - Center);
     public WPos ClampToBounds(WPos position) => Center + Bounds.ClampToBounds(position - Center);
@@ -59,6 +56,7 @@ public sealed class PictoArena(BossModuleConfig config, WPos center, ArenaBounds
         {
             _triCache.NextFrame();
         }
+        FloorHeight = Service.ClientState.LocalPlayer?.Position.Y ?? 0;
     }
 
     // unclipped primitive rendering that accept world-space positions; thin convenience wrappers around drawlist api
@@ -67,8 +65,8 @@ public sealed class PictoArena(BossModuleConfig config, WPos center, ArenaBounds
         thickness *= Config.ThicknessScale;
         var drawlist = PictoService.GetDrawList();
 
-        drawlist.PathLineTo(a.ToVec3());
-        drawlist.PathLineTo(b.ToVec3());
+        drawlist.PathLineTo(a.ToVec3(FloorHeight));
+        drawlist.PathLineTo(b.ToVec3(FloorHeight));
         drawlist.PathStroke(color != 0 ? color : ArenaColor.Danger, thickness: thickness);
     }
 
@@ -77,26 +75,26 @@ public sealed class PictoArena(BossModuleConfig config, WPos center, ArenaBounds
         thickness *= Config.ThicknessScale;
         var drawlist = PictoService.GetDrawList();
 
-        drawlist.PathLineTo(p1.ToVec3());
-        drawlist.PathLineTo(p2.ToVec3());
-        drawlist.PathLineTo(p3.ToVec3());
-        drawlist.PathStroke(color != 0 ? color : ArenaColor.Danger, thickness: thickness);
+        drawlist.PathLineTo(p1.ToVec3(FloorHeight));
+        drawlist.PathLineTo(p2.ToVec3(FloorHeight));
+        drawlist.PathLineTo(p3.ToVec3(FloorHeight));
+        drawlist.PathStroke(color != 0 ? color : ArenaColor.Danger, PctStrokeFlags.Closed, thickness: thickness);
     }
 
     public void AddTriangleFilled(WPos p1, WPos p2, WPos p3, uint color)
     {
-        PictoService.GetDrawList().AddTriangleFilled(p1.ToVec3(), p2.ToVec3(), p3.ToVec3(), color != 0 ? color : ArenaColor.Danger);
+        PictoService.GetDrawList().AddTriangleFilled(p1.ToVec3(FloorHeight), p2.ToVec3(FloorHeight), p3.ToVec3(FloorHeight), color != 0 ? color : ArenaColor.Danger);
     }
 
     public void AddQuad(WPos p1, WPos p2, WPos p3, WPos p4, uint color, float thickness = 1)
     {
         thickness *= Config.ThicknessScale;
-        PictoService.GetDrawList().AddQuad(p1.ToVec3(), p2.ToVec3(), p3.ToVec3(), p4.ToVec3(), color != 0 ? color : ArenaColor.Danger, thickness: thickness);
+        PictoService.GetDrawList().AddQuad(p1.ToVec3(FloorHeight), p2.ToVec3(FloorHeight), p3.ToVec3(FloorHeight), p4.ToVec3(FloorHeight), color != 0 ? color : ArenaColor.Danger, thickness: thickness);
     }
 
     public void AddQuadFilled(WPos p1, WPos p2, WPos p3, WPos p4, uint color)
     {
-        PictoService.GetDrawList().AddQuadFilled(p1.ToVec3(), p2.ToVec3(), p3.ToVec3(), p4.ToVec3(), color != 0 ? color : ArenaColor.Danger);
+        PictoService.GetDrawList().AddQuadFilled(p1.ToVec3(FloorHeight), p2.ToVec3(FloorHeight), p3.ToVec3(FloorHeight), p4.ToVec3(FloorHeight), color != 0 ? color : ArenaColor.Danger);
     }
 
     public void AddRect(WPos origin, WDir direction, float lenFront, float lenBack, float halfWidth, uint color, float thickness = 1)
@@ -111,26 +109,26 @@ public sealed class PictoArena(BossModuleConfig config, WPos center, ArenaBounds
     public void AddCircle(WPos center, float radius, uint color, float thickness = 1)
     {
         thickness *= Config.ThicknessScale;
-        PictoService.GetDrawList().AddCircle(center.ToVec3(), radius, color != 0 ? color : ArenaColor.Danger, thickness: thickness);
+        PictoService.GetDrawList().AddCircle(center.ToVec3(FloorHeight), radius, color != 0 ? color : ArenaColor.Danger, thickness: thickness);
     }
 
     public void AddCircleFilled(WPos center, float radius, uint color)
     {
-        PictoService.GetDrawList().AddCircleFilled(center.ToVec3(), radius, color != 0 ? color : ArenaColor.Danger);
+        PictoService.GetDrawList().AddCircleFilled(center.ToVec3(FloorHeight), radius, color != 0 ? color : ArenaColor.Danger);
     }
 
     public void AddCone(WPos center, float radius, Angle centerDirection, Angle halfAngle, uint color, float thickness = 1)
     {
         thickness *= Config.ThicknessScale;
-        float sDir = MathF.PI / 2 - centerDirection.Rad;
-        PictoService.GetDrawList().AddFan(center.ToVec3(), 0, radius, sDir - halfAngle.Rad, sDir + halfAngle.Rad, color != 0 ? color : ArenaColor.Danger, thickness: thickness);
+        float sDir = -centerDirection.Rad;
+        PictoService.GetDrawList().AddFan(center.ToVec3(FloorHeight), 0, radius, sDir - halfAngle.Rad, sDir + halfAngle.Rad, color != 0 ? color : ArenaColor.Danger, thickness: thickness);
     }
 
     public void AddDonutCone(WPos center, float innerRadius, float outerRadius, Angle centerDirection, Angle halfAngle, uint color, float thickness = 1)
     {
         thickness *= Config.ThicknessScale;
-        float sDir = MathF.PI / 2 - centerDirection.Rad;
-        PictoService.GetDrawList().AddFan(center.ToVec3(), innerRadius, outerRadius, sDir - halfAngle.Rad, sDir + halfAngle.Rad, color != 0 ? color : ArenaColor.Danger, thickness: thickness);
+        float sDir = -centerDirection.Rad;
+        PictoService.GetDrawList().AddFan(center.ToVec3(FloorHeight), innerRadius, outerRadius, sDir - halfAngle.Rad, sDir + halfAngle.Rad, color != 0 ? color : ArenaColor.Danger, thickness: thickness);
     }
 
     public void AddPolygon(ReadOnlySpan<WPos> vertices, uint color, float thickness = 1)
@@ -172,13 +170,13 @@ public sealed class PictoArena(BossModuleConfig config, WPos center, ArenaBounds
     // path api: add new point to path; this adds new edge from last added point, or defines first vertex if path is empty
     public void PathLineTo(WPos p)
     {
-        PictoService.GetDrawList().PathLineTo(p.ToVec3());
+        PictoService.GetDrawList().PathLineTo(p.ToVec3(FloorHeight));
     }
 
     // adds a bunch of points corresponding to arc - if path is non empty, this adds an edge from last point to first arc point
     public void PathArcTo(WPos center, float radius, float amin, float amax)
     {
-        PictoService.GetDrawList().PathArcTo(center.ToVec3(), radius, amin, amax);
+        PictoService.GetDrawList().PathArcTo(center.ToVec3(FloorHeight), radius, amin, amax);
     }
 
     public void PathStroke(bool closed, uint color, float thickness = 1)
@@ -198,7 +196,7 @@ public sealed class PictoArena(BossModuleConfig config, WPos center, ArenaBounds
     {
         var drawlist = PictoService.GetDrawList();
         foreach (var tri in triangulation)
-            drawlist.AddTriangleFilled(tri.A.ToVec3(), tri.B.ToVec3(), tri.C.ToVec3(), color != 0 ? color : ArenaColor.AOE);
+            drawlist.AddTriangleFilled((tri.A + Center).ToVec3(FloorHeight), (tri.B + Center).ToVec3(FloorHeight), (tri.C + Center).ToVec3(FloorHeight), color != 0 ? color : ArenaColor.AOE);
     }
 
     // draw zones - these are filled primitives clipped to arena border; note that triangulation is cached
@@ -235,7 +233,7 @@ public sealed class PictoArena(BossModuleConfig config, WPos center, ArenaBounds
 
     public void TextWorld(WPos center, string text, uint color, float fontSize = 17)
     {
-        PictoService.GetDrawList().AddText(center.ToVec3(), color, text, fontSize / 17);
+        PictoService.GetDrawList().AddText(center.ToVec3(FloorHeight), color, text, fontSize / 17);
     }
 
     // high level utilities
@@ -246,13 +244,13 @@ public sealed class PictoArena(BossModuleConfig config, WPos center, ArenaBounds
         foreach (var p in Bounds.ShapeSimplified.Parts)
         {
             foreach (var off in p.Exterior)
-                dl.PathLineTo(off.ToVec3());
+                dl.PathLineTo((Center + off).ToVec3(FloorHeight));
             dl.PathStroke(color, PctStrokeFlags.Closed, 2);
 
             foreach (var i in p.Holes)
             {
                 foreach (var off in p.Interior(i))
-                    dl.PathLineTo(off.ToVec3());
+                    dl.PathLineTo((Center + off).ToVec3(FloorHeight));
                 dl.PathStroke(color, PctStrokeFlags.Closed, 2);
             }
         }
@@ -327,6 +325,6 @@ public sealed class PictoArena(BossModuleConfig config, WPos center, ArenaBounds
 
     public void End()
     {
-        ImGui.GetWindowDrawList().PopClipRect();
+        //ImGui.GetWindowDrawList().PopClipRect();
     }
 }
