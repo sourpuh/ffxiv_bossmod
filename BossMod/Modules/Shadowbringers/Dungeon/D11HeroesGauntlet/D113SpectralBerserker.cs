@@ -298,7 +298,7 @@ class WildRampageTower(BossModule module) : BossComponent(module)
             _towers.Clear();
         }
     }
-    public static void DrawTower(MiniArena arena, WPos pos, float radius, bool safe)
+    public static void DrawTower(PictoArena arena, WPos pos, float radius, bool safe)
     {
         if (arena.Config.ShowOutlinesAndShadows)
             arena.AddCircle(pos, radius, 0xFF000000, 3);

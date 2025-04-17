@@ -1,6 +1,4 @@
-﻿using ImGuiNET;
-
-namespace BossMod.Components;
+﻿namespace BossMod.Components;
 
 // generic gaze/weakpoint component, allows customized 'eye' position
 public abstract class GenericGaze(BossModule module, ActionID aid = new(), bool inverted = false) : CastCounter(module, aid)
@@ -47,8 +45,7 @@ public abstract class GenericGaze(BossModule module, ActionID aid = new(), bool 
         foreach (var eye in ActiveEyes(pcSlot, pc))
         {
             bool danger = HitByEye(pc, eye) != Inverted;
-            var eyeCenter = IndicatorScreenPos(eye.Position);
-            DrawEye(eyeCenter, danger);
+            DrawEye(eye.Position.ToVec3(), danger);
 
             if (pc.Position.InCircle(eye.Position, eye.Range))
             {
@@ -59,28 +56,29 @@ public abstract class GenericGaze(BossModule module, ActionID aid = new(), bool 
         }
     }
 
-    public static void DrawEye(Vector2 eyeCenter, bool danger)
+    public static void DrawEye(Vector3 eyeCenter, bool danger)
     {
-        var dl = ImGui.GetWindowDrawList();
-        dl.PathArcTo(eyeCenter - new Vector2(0, _eyeOffsetV), _eyeOuterR, MathF.PI / 2 + _eyeHalfAngle, MathF.PI / 2 - _eyeHalfAngle);
-        dl.PathArcTo(eyeCenter + new Vector2(0, _eyeOffsetV), _eyeOuterR, -MathF.PI / 2 + _eyeHalfAngle, -MathF.PI / 2 - _eyeHalfAngle);
-        dl.PathFillConvex(danger ? ArenaColor.Enemy : ArenaColor.PC);
-        dl.AddCircleFilled(eyeCenter, _eyeInnerR, ArenaColor.Border);
+        //var dl = ImGui.GetWindowDrawList();
+        //dl.PathArcTo(eyeCenter - new Vector2(0, _eyeOffsetV), _eyeOuterR, MathF.PI / 2 + _eyeHalfAngle, MathF.PI / 2 - _eyeHalfAngle);
+        //dl.PathArcTo(eyeCenter + new Vector2(0, _eyeOffsetV), _eyeOuterR, -MathF.PI / 2 + _eyeHalfAngle, -MathF.PI / 2 - _eyeHalfAngle);
+        //dl.PathFillConvex(danger ? ArenaColor.Enemy : ArenaColor.PC);
+        //dl.AddCircleFilled(eyeCenter, _eyeInnerR, ArenaColor.Border);
     }
 
     private bool HitByEye(Actor actor, Eye eye) => (actor.Rotation + eye.Forward).ToDirection().Dot((eye.Position - actor.Position).Normalized()) >= 0.707107f; // 45-degree
 
     private Vector2 IndicatorScreenPos(WPos eye)
     {
-        if (Module.InBounds(eye))
-        {
-            return Arena.WorldPositionToScreenPosition(eye);
-        }
-        else
-        {
-            var dir = (eye - Module.Center).Normalized();
-            return Arena.ScreenCenter + Arena.RotatedCoords(dir.ToVec2()) * (Arena.ScreenHalfSize + Arena.ScreenMarginSize / 2);
-        }
+        //if (Module.InBounds(eye))
+        //{
+        //    return Arena.WorldPositionToScreenPosition(eye);
+        //}
+        //else
+        //{
+        //    var dir = (eye - Module.Center).Normalized();
+        //    return Arena.ScreenCenter + Arena.RotatedCoords(dir.ToVec2()) * (Arena.ScreenHalfSize + Arena.ScreenMarginSize / 2);
+        //}
+        return new();
     }
 }
 

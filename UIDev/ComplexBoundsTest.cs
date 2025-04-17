@@ -5,7 +5,7 @@ namespace UIDev;
 
 class ComplexBoundsTest : TestWindow
 {
-    private MiniArena _arena;
+    private PictoArena _arena;
     private float _azimuth = -72;
     private float _altitude = 90;
     private float _boundsApproxError = 0.5f;
@@ -57,7 +57,7 @@ class ComplexBoundsTest : TestWindow
         ImGui.DragFloat("AOE rotation", ref _aoeRotDeg, 1, -180, +180);
     }
 
-    private MiniArena RebuildArena()
+    private PictoArena RebuildArena()
     {
         var shape = new PolygonClipper.Operand();
         AddPlatform(shape, _platformCenterOffset * 0.Degrees().ToDirection());

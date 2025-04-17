@@ -44,7 +44,7 @@ public abstract class Knockback(BossModule module, ActionID aid = new(), bool ig
     public static WPos AwayFromSource(WPos pos, WPos origin, float distance) => pos != origin ? pos + distance * (pos - origin).Normalized() : pos;
     public static WPos AwayFromSource(WPos pos, Actor? source, float distance) => source != null ? AwayFromSource(pos, source.Position, distance) : pos;
 
-    public static void DrawKnockback(WPos from, WPos to, Angle rot, MiniArena arena)
+    public static void DrawKnockback(WPos from, WPos to, Angle rot, PictoArena arena)
     {
         if (from != to)
         {
@@ -54,7 +54,7 @@ public abstract class Knockback(BossModule module, ActionID aid = new(), bool ig
             arena.AddLine(from, to, ArenaColor.Danger);
         }
     }
-    public static void DrawKnockback(Actor actor, WPos adjPos, MiniArena arena) => DrawKnockback(actor.Position, adjPos, actor.Rotation, arena);
+    public static void DrawKnockback(Actor actor, WPos adjPos, PictoArena arena) => DrawKnockback(actor.Position, adjPos, actor.Rotation, arena);
 
     // note: if implementation returns multiple sources, it is assumed they are applied sequentially (so they should be pre-sorted in activation order)
     public abstract IEnumerable<Source> Sources(int slot, Actor actor);

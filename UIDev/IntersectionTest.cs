@@ -12,7 +12,7 @@ class IntersectionTest : TestWindow
     private float _shapeExtentSecondary = 30; // x/phi (deg)
     private float _shapeDirDeg = 90;
     private bool _shapeIsRect;
-    private readonly MiniArena _arena = new(new(), default, new ArenaBoundsSquare(10));
+    private readonly PictoArena _arena = new(new(), default, new ArenaBoundsSquare(10));
 
     public IntersectionTest() : base("Intersection test", new(400, 400), ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse)
     {

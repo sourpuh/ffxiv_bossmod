@@ -61,9 +61,9 @@ class Tiles : BossComponent
                 ZoneTile(Arena, tile, ArenaColor.AOE);
     }
 
-    public static void ZoneTile(MiniArena arena, int tile, uint color) => arena.ZoneCone(new(100, 100), tile < 8 ? 0 : 8, tile < 8 ? 8 : 16, 157.5f.Degrees() - 45.Degrees() * (tile % 8), 22.5f.Degrees(), color);
+    public static void ZoneTile(PictoArena arena, int tile, uint color) => arena.ZoneCone(new(100, 100), tile < 8 ? 0 : 8, tile < 8 ? 8 : 16, 157.5f.Degrees() - 45.Degrees() * (tile % 8), 22.5f.Degrees(), color);
 
-    public static void DrawTile(MiniArena arena, int tile, uint color) => arena.AddDonutCone(new(100, 100), tile < 8 ? 0 : 8, tile < 8 ? 8 : 16, 157.5f.Degrees() - 45.Degrees() * (tile % 8), 22.5f.Degrees(), color);
+    public static void DrawTile(PictoArena arena, int tile, uint color) => arena.AddDonutCone(new(100, 100), tile < 8 ? 0 : 8, tile < 8 ? 8 : 16, 157.5f.Degrees() - 45.Degrees() * (tile % 8), 22.5f.Degrees(), color);
 
     public static int GetTile(WPos position)
     {

@@ -1,5 +1,6 @@
 ﻿using Dalamud.Interface.Utility.Raii;
 using ImGuiNET;
+using Pictomancy;
 
 namespace BossMod;
 
@@ -11,7 +12,7 @@ public abstract class BossModule : IDisposable
     public readonly Actor PrimaryActor;
     public readonly BossModuleConfig WindowConfig = Service.Config.Get<BossModuleConfig>();
     public readonly ColorConfig ColorConfig = Service.Config.Get<ColorConfig>();
-    public readonly MiniArena Arena;
+    public readonly PictoArena Arena;
     public readonly BossModuleRegistry.Info? Info;
     public readonly StateMachine StateMachine;
     public readonly Pathfinding.ObstacleMapManager Obstacles;
@@ -166,9 +167,14 @@ public abstract class BossModule : IDisposable
         }
         if (includeArena)
         {
-            Arena.Begin(cameraAzimuth);
-            DrawArena(pcSlot, pc, pcHints.Any(h => h.Item2));
-            Arena.End();
+            using (var drawList = PictoService.Draw())
+            {
+                if (drawList == null)
+                    return;
+                Arena.Begin(cameraAzimuth);
+                DrawArena(pcSlot, pc, pcHints.Any(h => h.Item2));
+                Arena.End();
+            }
         }
     }
 

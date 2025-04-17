@@ -5,7 +5,7 @@ record class AOEShapeTiles(BitMask Tiles) : AOEShape
     public BitMask Tiles = Tiles;
 
     public override bool Check(WPos position, WPos origin, Angle rotation) => Tiles[FunkyFloor.GetPosTile(position)];
-    public override void Draw(MiniArena arena, WPos origin, Angle rotation, uint color = 0)
+    public override void Draw(PictoArena arena, WPos origin, Angle rotation, uint color = 0)
     {
         foreach (var t in Tiles.SetBits())
         {
@@ -13,7 +13,7 @@ record class AOEShapeTiles(BitMask Tiles) : AOEShape
             arena.ZoneRect(center - new WDir(2.5f, 0), center + new WDir(2.5f, 0), 2.5f, color);
         }
     }
-    public override void Outline(MiniArena arena, WPos origin, Angle rotation, uint color = 0) { }
+    public override void Outline(PictoArena arena, WPos origin, Angle rotation, uint color = 0) { }
 }
 
 class FloorCounter(BossModule module) : Components.CastCounter(module, ActionID.MakeSpell(AID.FunkyFloorActivate));

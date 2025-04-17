@@ -65,7 +65,7 @@ public class BossComponent(BossModule module)
     public virtual void OnEventDirectorUpdate(uint updateID, uint param1, uint param2, uint param3, uint param4) { }
 
     // some commonly used shortcuts
-    protected MiniArena Arena => Module.Arena;
+    protected PictoArena Arena => Module.Arena;
     protected WorldState WorldState => Module.WorldState;
     protected PartyState Raid => Module.Raid;
     protected void ReportError(string message) => Module.ReportError(this, message);

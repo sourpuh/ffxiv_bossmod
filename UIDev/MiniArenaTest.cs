@@ -5,7 +5,7 @@ namespace UIDev;
 
 class MiniArenaTest : TestWindow
 {
-    private readonly MiniArena _arena = new(new(), new(100, 100), new ArenaBoundsSquare(20));
+    private readonly PictoArena _arena = new(new(), new(100, 100), new ArenaBoundsSquare(20));
     private bool _arenaIsCircle;
     private float _azimuth = -72;
     private float _altitude = 90;

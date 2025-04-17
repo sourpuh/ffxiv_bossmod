@@ -66,7 +66,7 @@ class TerrifyingGlance(BossModule module) : Components.BaitAwayIcon(module, new 
 
         if (CurrentBaits.Count > 0)
         {
-            Components.GenericGaze.DrawEye(Module.Arena.WorldPositionToScreenPosition(CurrentBaits[0].Source.Position), WillBeGazed(pc));
+            Components.GenericGaze.DrawEye(CurrentBaits[0].Source.Position.ToVec3(), WillBeGazed(pc));
 
             if (WillBeHit(pc))
             {
